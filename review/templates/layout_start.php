@@ -18,10 +18,7 @@ $loggedInRoles = isset($user['id']) ? \App\Models\User::rolesFor((int) $user['id
 </head>
 <body>
 <header class="topbar">
-  <!-- Points at the local marketing site (php -S localhost:8080 -t icscientec2/).
-       Update to the real deployed site URL, e.g. https://icscientec.cst.edu.bt,
-       once it's hosted. -->
-  <a href="http://localhost:8080/pages/welcome.html" class="brand"><span class="brand-name">ICSciEnTec</span><span class="brand-sub">Review Portal</span></a>
+  <a href="https://icscientec.cst.edu.bt/" class="brand"><span class="brand-name">ICSciEnTec</span><span class="brand-sub">Review Portal</span></a>
   <?php if ($user): ?>
   <nav class="topnav">
     <?php if (in_array('author', $loggedInRoles, true)): ?>
