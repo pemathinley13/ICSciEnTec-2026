@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abstract Submission Guidelines — ICSciEnTec 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  width: 100%; max-width: 100%;
+  overflow-x: hidden; scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  width: 100%; max-width: 100%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: #f3f8fa;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh; color: #263545;
+}
+:root {
+  --teal:    #1a6577;
+  --teal-d:  #0f4655;
+  --teal-l:  #237a90;
+  --gold:    #C69444;
+  --white:   #fff;
+  --dark:    #1e2f3c;
+  --muted:   #7a9aaa;
+  --body-bg: #f3f8fa;
+  --pad:     60px;
+  --font-lg: 36px;
+  --font-md: 20px;
+  --font-sm: 13px;
+  /* fallback design tokens referenced by the Sponsors fragment */
+  --color-background-primary: #ffffff;
+  --color-border-tertiary: #d7e6ea;
+  --color-border-secondary: #1a6577;
+  --color-text-primary: #1e2f3c;
+  --color-text-secondary: #5a7a8a;
+  --color-text-tertiary: #7a9aaa;
+  --border-radius-lg: 16px;
+}
+
+/* ════ NAVBAR ════ */
+.navbar {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  padding: 0 var(--pad); height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 300;
+  border-bottom: 1px solid rgba(26,101,119,0.10);
+  box-shadow: 0 2px 20px rgba(15,70,85,0.06);
+}
+.logo { display: flex; flex-direction: column; justify-content: center; gap: 3px; text-decoration: none; }
+.logo-name { color: var(--dark); font-size: var(--font-md); font-weight: 800; letter-spacing: 0.01em; line-height: 1; }
+.logo-sub  { color: var(--gold); font-size: 15px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+
+.nav-links { display: flex; gap: 2px; align-items: center; position: relative; }
+.nav-item  { position: relative; }
+
+.nav-link {
+  color: rgba(30,47,60,0.86); font-size: 16px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s; position: relative;
+  padding: 7px 13px; border-radius: 6px;
+  display: flex; align-items: center; gap: 6px;
+  cursor: pointer; background: none; border: none; font-family: inherit; white-space: nowrap;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: 1px; left: 12px; right: 12px;
+  height: 1.5px; background: var(--gold);
+  transform: scaleX(0); transition: transform 0.25s; transform-origin: left;
+}
+.nav-link.active::after           { transform: scaleX(1); }
+.nav-link.active                  { color: var(--teal); }
+
+.nav-chevron { width: 13px; height: 13px; opacity: 0.55; transition: transform 0.22s; flex-shrink: 0; }
+.nav-item:hover .nav-chevron,
+.nav-item.open  .nav-chevron      { transform: rotate(180deg); opacity: 0.85; }
+
+.nav-dropdown {
+  position: absolute; top: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(255,255,255,0.99);
+  backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(26,101,119,0.12); border-radius: 12px;
+  min-width: 230px; padding: 8px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 400;
+  box-shadow: 0 16px 44px rgba(15,70,85,0.16), 0 0 0 1px rgba(26,101,119,0.04) inset;
+}
+.nav-dropdown::before {
+  content: ''; position: absolute; top: -5px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 9px; height: 9px; background: rgba(255,255,255,0.99);
+  border-left: 1px solid rgba(26,101,119,0.12);
+  border-top: 1px solid rgba(26,101,119,0.12);
+  border-radius: 2px 0 0 0;
+}
+.nav-item:hover .nav-dropdown,
+.nav-item.open  .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+.nav-dropdown a {
+  display: flex; align-items: center; gap: 9px; padding: 10px 15px;
+  font-size: 16px; font-weight: 500; color: rgba(30,47,60,0.86);
+  text-decoration: none; border-radius: 8px;
+  transition: background 0.18s, color 0.18s;
+}
+.nav-dropdown a:hover          { background: rgba(26,101,119,0.06); color: var(--teal-d); }
+.nav-dropdown a.active         { color: var(--teal); font-weight: 700; }
+
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 8px; color: var(--dark);
+  flex-direction: column; gap: 5px; justify-content: center; align-items: center;
+}
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: currentColor; border-radius: 2px; transition: all 0.3s; }
+
+.nav-mobile-menu {
+  display: none; flex-direction: column;
+  background: rgba(255,255,255,0.99); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(26,101,119,0.10);
+  box-shadow: 0 8px 24px rgba(15,70,85,0.08);
+  padding: 8px 0; z-index: 299; position: sticky; top: 68px;
+  max-height: calc(100vh - 68px); overflow-y: auto;
+}
+.nav-mobile-menu a {
+  padding: 12px 24px; font-size: 16px; font-weight: 500;
+  color: rgba(30,47,60,0.86); text-decoration: none;
+  border-bottom: 1px solid rgba(26,101,119,0.06);
+  display: block; transition: color 0.2s, background 0.2s;
+}
+.nav-mobile-menu a:hover  { color: var(--teal-d); background: rgba(26,101,119,0.05); }
+.nav-mobile-menu a.sub    { padding-left: 36px; font-size: 14px; color: rgba(30,47,60,0.55); background: rgba(26,101,119,0.02); }
+.nav-mobile-menu a.active { color: var(--teal); background: rgba(198,148,68,0.10); font-weight: 700; }
+.nav-mobile-menu.open     { display: flex; }
+
+/* ════ FOOTER ════ */
+.footer {
+  background: var(--dark); padding: 44px var(--pad) 28px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+.footer-logo  { font-size: var(--font-md); color: #fff; font-weight: 800; }
+.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; max-width: 320px; line-height: 1.6; }
+.footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(212,175,55,0.85); margin-bottom: 12px; }
+.footer-links { display: flex; flex-direction: column; gap: 9px; }
+.footer-link  { color: rgba(255,255,255,0.45); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+.footer-link:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.footer-copy  { font-size: 12px; color: rgba(255,255,255,0.28); }
+
+/* ════ SHARED RESPONSIVE (nav/footer/base type scale) ════ */
+@media (max-width: 1100px) {
+  :root { --pad: 40px; --font-lg: 32px; --font-md: 18px; --font-sm: 12px; }
+}
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  :root { --pad: 28px; --font-lg: 28px; --font-md: 16px; --font-sm: 11px; }
+  .footer-top { flex-direction: column; }
+  .footer-cols { gap: 32px; }
+}
+@media (max-width: 560px) {
+  :root { --pad: 20px; --font-lg: 24px; --font-md: 15px; --font-sm: 10px; }
+  .footer-cols { flex-direction: column; gap: 20px; }
+  .footer-bottom { flex-direction: column; }
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="welcome.html" class="logo"><span class="logo-name">ICSciEnTec</span><span class="logo-sub">2027</span></a>
+  <div class="nav-links">
+    <div class="nav-item"><a href="welcome.html" class="nav-link">Home</a></div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">About
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="about-icscientec.html">About ICSciEnTec</a>
+        <a href="organising-committee.html">Organising Committee</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">Conference 2027
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="venue.html">Venue</a>
+        <a href="programme-schedule.html">Programme Schedule</a>
+        <a href="guest-and-keynote-speakers.html">Guest & Keynote Speakers</a>
+        <a href="conference-fee-details.html">Conference Fee Details</a>
+      </div>
+    </div>
+    <div class="nav-item"><a href="editorial-process.html" class="nav-link">Editorial Process</a></div>
+    <div class="nav-item">
+      <a href="#" class="nav-link active">Submission Guideline
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="abstract-submission-guidelines.html" class="active">Abstract Submission Guidelines</a>
+        <a href="full-paper-submission-guidelines.html">Full Paper Submission Guidelines</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">Sponsorship
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="sponsorship-package.html">Sponsorship Package</a>
+        <a href="sponsors.html">Sponsors</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="#" class="nav-link">Past Conference
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+      <div class="nav-dropdown">
+        <a href="4th-icscientec-2026.html">4th ICSciEnTec 2026</a>
+        <a href="3rd-icscientec-2025.html">3rd ICSciEnTec 2025</a>
+        <a href="2nd-icscientec-2022.html">2nd ICSciEnTec 2022</a>
+        <a href="1st-icscientec-2021.html">1st ICSciEnTec 2021</a>
+      </div>
+    </div>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="welcome.html">Home</a>
+  <a href="#">About</a>
+  <a href="about-icscientec.html" class="sub">About ICSciEnTec</a>
+  <a href="organising-committee.html" class="sub">Organising Committee</a>
+  <a href="#">Conference 2027</a>
+  <a href="venue.html" class="sub">Venue</a>
+  <a href="programme-schedule.html" class="sub">Programme Schedule</a>
+  <a href="guest-and-keynote-speakers.html" class="sub">Guest & Keynote Speakers</a>
+  <a href="conference-fee-details.html" class="sub">Conference Fee Details</a>
+  <a href="editorial-process.html">Editorial Process</a>
+  <a href="#">Submission Guideline</a>
+  <a href="abstract-submission-guidelines.html" class="sub active">Abstract Submission Guidelines</a>
+  <a href="full-paper-submission-guidelines.html" class="sub">Full Paper Submission Guidelines</a>
+  <a href="#">Sponsorship</a>
+  <a href="sponsorship-package.html" class="sub">Sponsorship Package</a>
+  <a href="sponsors.html" class="sub">Sponsors</a>
+  <a href="#">Past Conference</a>
+  <a href="4th-icscientec-2026.html" class="sub">4th ICSciEnTec 2026</a>
+  <a href="3rd-icscientec-2025.html" class="sub">3rd ICSciEnTec 2025</a>
+  <a href="2nd-icscientec-2022.html" class="sub">2nd ICSciEnTec 2022</a>
+  <a href="1st-icscientec-2021.html" class="sub">1st ICSciEnTec 2021</a>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ═══ RESET ═══ */
+.sg-wrap, .sg-wrap *, .sg-wrap *::before, .sg-wrap *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+  font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;
+}
+.elementor-widget-container,.elementor-column-wrap,.elementor-widget-html,
+.elementor-section,.elementor-container,.entry-content,.post-content {
+  width: 100% !important; max-width: 100% !important;
+}
+
+/* ═══ WRAPPER ═══ */
+.sg-wrap {
+  width: 100vw;
+  position: relative;
+  left: 50%; right: 50%;
+  margin-left: -50vw; margin-right: -50vw;
+  overflow-x: hidden;
+  background: #f3f8fa;
+  --teal: #1a6577; --teal-d: #0f4655; --teal-l: #237a90;
+  --gold: #C69444; --gold-l: #d4a455;
+  --dark: #1e2f3c; --muted: #7a9aaa;
+  --white: #fff; --body-bg: #f3f8fa; --pad: 80px;
+}
+
+/* ═══ HERO ═══ */
+.sg-hero {
+  position: relative;
+  background: linear-gradient(135deg, #0a2530 0%, #0d3548 55%, #0a2530 100%);
+  padding: 92px var(--pad) 84px;
+  text-align: center;
+  overflow: hidden;
+}
+.sg-hero::before {
+  content: ''; position: absolute; top: -130px; right: -130px;
+  width: 560px; height: 560px; border-radius: 50%;
+  border: 1px solid rgba(198,148,68,0.07);
+  animation: sgSpin 32s linear infinite; pointer-events: none;
+}
+.sg-hero::after {
+  content: ''; position: absolute; bottom: -90px; left: -90px;
+  width: 400px; height: 400px; border-radius: 50%;
+  border: 1px solid rgba(26,101,119,0.1);
+  animation: sgSpin 22s linear infinite reverse; pointer-events: none;
+}
+@keyframes sgSpin { to { transform: rotate(360deg); } }
+
+.sg-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(198,148,68,0.1); border: 1px solid rgba(198,148,68,0.22);
+  border-radius: 20px; padding: 7px 18px; margin-bottom: 24px;
+  font-size: 10.5px; font-weight: 600; color: var(--gold);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  position: relative; z-index: 2;
+  opacity: 0; animation: sgUp 0.7s 0.15s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.sg-hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.sg-hero-title {
+  font-size: clamp(32px, 5vw, 50px); font-weight: 800;
+  color: #fff; letter-spacing: -0.03em; line-height: 1.08;
+  margin-bottom: 16px; position: relative; z-index: 2;
+  opacity: 0; animation: sgUp 0.7s 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.sg-hero-title .gold { color: var(--gold); }
+.sg-hero-sub {
+  font-size: 15px; color: rgba(255,255,255,0.52); max-width: 560px;
+  margin: 0 auto; line-height: 1.72;
+  position: relative; z-index: 2;
+  opacity: 0; animation: sgUp 0.65s 0.46s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.sg-hero-bar {
+  width: 36px; height: 2px; background: var(--gold);
+  border-radius: 2px; margin: 26px auto 0;
+  opacity: 0; animation: sgUp 0.5s 0.6s ease forwards;
+  position: relative; z-index: 2;
+}
+@keyframes sgUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ QUICK NAV PILLS ═══ */
+.sg-nav {
+  background: var(--white);
+  border-bottom: 1px solid rgba(26,101,119,0.08);
+  padding: 18px var(--pad);
+  display: flex; gap: 10px; flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.sg-nav.in-view { opacity: 1; transform: translateY(0); }
+.sg-nav-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 16px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; color: var(--teal);
+  background: rgba(26,101,119,0.07);
+  border: 1px solid rgba(26,101,119,0.14);
+  text-decoration: none; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+}
+.sg-nav-pill:hover {
+  background: var(--teal); color: #fff; border-color: var(--teal);
+  transform: translateY(-2px); box-shadow: 0 4px 14px rgba(26,101,119,0.22);
+}
+.sg-nav-pill span { font-size: 10px; opacity: 0.65; }
+
+/* ═══ BODY ═══ */
+.sg-body {
+  max-width: 960px; margin: 0 auto;
+  padding: 72px var(--pad) 96px;
+  display: flex; flex-direction: column; gap: 32px;
+}
+
+/* ═══ SCROLL ANIMATION ═══ */
+.sg-obs {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.sg-obs.in-view { opacity: 1; transform: translateY(0); }
+.sg-d1 { transition-delay: 0.06s; }
+.sg-d2 { transition-delay: 0.12s; }
+.sg-d3 { transition-delay: 0.18s; }
+
+/* ═══ SECTION CARD ═══ */
+.sg-section {
+  background: var(--white);
+  border-radius: 18px;
+  border: 1px solid rgba(26,101,119,0.1);
+  border-left: 4px solid transparent;
+  overflow: hidden;
+  transition: border-left-color 0.3s, box-shadow 0.3s, transform 0.32s cubic-bezier(0.22,1,0.36,1);
+  /* 3-D perspective tilt on hover */
+  transform-style: preserve-3d;
+}
+.sg-section:hover {
+  border-left-color: var(--teal);
+  box-shadow: 0 14px 48px rgba(26,101,119,0.1), -3px 0 0 rgba(198,148,68,0.35);
+  transform: translateY(-3px) perspective(1000px) rotateX(0.6deg);
+}
+
+.sg-section-head {
+  padding: 24px 30px;
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(26,101,119,0.03);
+  border-bottom: 1px solid rgba(26,101,119,0.07);
+  cursor: pointer;
+  user-select: none;
+}
+.sg-section-num {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(26,101,119,0.09);
+  border: 1px solid rgba(26,101,119,0.16);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: var(--teal);
+  flex-shrink: 0;
+  transition: background 0.25s, color 0.25s;
+}
+.sg-section:hover .sg-section-num { background: var(--teal); color: #fff; }
+.sg-section-title {
+  font-size: 17px; font-weight: 800; color: var(--dark);
+  letter-spacing: -0.01em; line-height: 1.2; flex: 1;
+}
+.sg-section-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(198,148,68,0.1); border: 1px solid rgba(198,148,68,0.18);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background 0.25s;
+}
+.sg-section:hover .sg-section-icon { background: rgba(198,148,68,0.18); }
+.sg-section-icon svg { width: 15px; height: 15px; stroke: var(--gold); }
+
+.sg-section-body { padding: 6px 0 10px; }
+
+/* ═══ POLICY ITEMS ═══ */
+.sg-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 30px;
+  border-bottom: 1px solid rgba(26,101,119,0.05);
+  transition: background 0.2s, padding-left 0.25s;
+  cursor: default;
+}
+.sg-item:last-child { border-bottom: none; }
+.sg-item:hover { background: #f8fcfe; padding-left: 36px; }
+
+.sg-item-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(26,101,119,0.25);
+  flex-shrink: 0; margin-top: 7px;
+  transition: background 0.22s, transform 0.22s;
+}
+.sg-item:hover .sg-item-dot { background: var(--teal); transform: scale(1.3); }
+.sg-item-content { flex: 1; }
+.sg-item-label {
+  font-size: 13.5px; font-weight: 700; color: var(--dark);
+  margin-bottom: 4px;
+}
+.sg-item-text {
+  font-size: 13px; color: rgba(30,47,60,0.65); line-height: 1.74;
+}
+
+/* ═══ SPEC GRID (for abstract specs) ═══ */
+.sg-spec-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; padding: 18px 30px;
+}
+.sg-spec-card {
+  background: var(--body-bg);
+  border: 1px solid rgba(26,101,119,0.09);
+  border-radius: 10px; padding: 16px 18px;
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+}
+.sg-spec-card:hover {
+  border-color: rgba(26,101,119,0.2);
+  background: #eaf4f7;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(26,101,119,0.08);
+}
+.sg-spec-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+}
+.sg-spec-value { font-size: 14px; font-weight: 600; color: var(--dark); }
+
+/* ═══ DOWNLOAD / CTA CARD ═══ */
+.sg-cta-card {
+  background: linear-gradient(135deg, rgba(26,101,119,0.06) 0%, rgba(198,148,68,0.04) 100%);
+  border: 1px solid rgba(26,101,119,0.12);
+  border-radius: 16px; padding: 32px 30px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+}
+.sg-cta-left {}
+.sg-cta-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+}
+.sg-cta-title { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+.sg-cta-sub { font-size: 13px; color: var(--muted); }
+.sg-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal); color: #fff;
+  padding: 12px 24px; border-radius: 9px;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  letter-spacing: 0.02em; white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 4px 16px rgba(26,101,119,0.22);
+}
+.sg-cta-btn:hover {
+  background: var(--teal-l);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,101,119,0.32);
+}
+.sg-cta-btn svg { width: 15px; height: 15px; stroke: currentColor; }
+
+/* ═══ SUBMIT BANNER ═══ */
+.sg-submit-banner {
+  background: linear-gradient(135deg, #0a2530 0%, #0d3548 100%);
+  border-radius: 18px; padding: 36px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 28px; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+}
+.sg-submit-banner::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 240px; height: 240px; border-radius: 50%;
+  border: 1px solid rgba(198,148,68,0.1); pointer-events: none;
+}
+.sg-submit-left {}
+.sg-submit-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 8px;
+}
+.sg-submit-title {
+  font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; letter-spacing: -0.02em;
+}
+.sg-submit-sub { font-size: 13px; color: rgba(255,255,255,0.45); }
+.sg-submit-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: #1c2b14;
+  padding: 13px 28px; border-radius: 9px;
+  font-size: 13.5px; font-weight: 700; text-decoration: none;
+  letter-spacing: 0.02em; white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 4px 18px rgba(198,148,68,0.3);
+  position: relative; z-index: 1;
+}
+.sg-submit-btn:hover {
+  background: var(--gold-l);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(198,148,68,0.45);
+}
+.sg-submit-btn svg { width: 15px; height: 15px; stroke: currentColor; }
+
+.sg-dates-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55);
+  text-decoration: none; margin-top: 10px;
+  transition: color 0.22s;
+}
+.sg-dates-link:hover { color: var(--gold); }
+.sg-dates-link svg { width: 13px; height: 13px; stroke: currentColor; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  .sg-wrap { --pad: 32px; }
+  .sg-spec-grid { grid-template-columns: 1fr; }
+  .sg-cta-card { flex-direction: column; align-items: flex-start; }
+  .sg-submit-banner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .sg-wrap { --pad: 20px; }
+  .sg-hero { padding: 70px var(--pad) 60px; }
+  .sg-body { gap: 20px; padding: 48px var(--pad) 72px; }
+  .sg-section-head { padding: 18px 20px; }
+  .sg-item { padding: 14px 20px; }
+  .sg-item:hover { padding-left: 26px; }
+  .sg-spec-grid { padding: 14px 20px; }
+  .sg-submit-banner { padding: 28px 24px; }
+}
+</style>
+
+<div class="sg-wrap">
+
+  <!-- HERO -->
+  <div class="sg-hero">
+    <h1 class="sg-hero-title">Abstract Submission <span class="gold">Guidelines</span></h1>
+    <p class="sg-hero-sub">Everything you need to know before submitting your abstract or full paper to ICSciEnTec 2027.</p>
+    <div class="sg-hero-bar"></div>
+  </div>
+
+  <!-- QUICK NAV -->
+  <div class="sg-nav" id="sgNav">
+    <a href="#sg-s1" class="sg-nav-pill"><span>01</span> General Policies &amp; Ethics</a>
+    <a href="#sg-s2" class="sg-nav-pill"><span>02</span> Abstract Content &amp; Structure</a>
+    <a href="#sg-s3" class="sg-nav-pill"><span>03</span> Formatting &amp; Template</a>
+    <a href="#sg-s4" class="sg-nav-pill"><span>04</span> Key Dates &amp; Submission</a>
+  </div>
+
+  <div class="sg-body">
+
+    <!-- ── SECTION 1 ── -->
+    <div class="sg-section sg-obs" id="sg-s1">
+      <div class="sg-section-head">
+        <div class="sg-section-num">01</div>
+        <div class="sg-section-title">General Policies &amp; Ethics</div>
+        <div class="sg-section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+      </div>
+      <div class="sg-section-body">
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Compliance &amp; Quality</div>
+            <div class="sg-item-text">Submissions must meet minimum academic quality standards. Non-compliant, poorly formatted, or low-quality papers may be returned to authors or desk-rejected by the editorial team without undergoing full review.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Review Process</div>
+            <div class="sg-item-text">Editors will initially screen all submissions to ensure they align with the conference's aims and scope. Papers passing this preliminary check will be sent for double-blind peer review to determine final acceptance or rejection.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Permissions &amp; Consent</div>
+            <div class="sg-item-text">Before submission, authors are legally responsible for obtaining permission to publish any copyrighted material included in their work (e.g., photos, diagrams, and proprietary datasets). All listed co-authors must explicitly consent to their inclusion on the paper.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Research Ethics</div>
+            <div class="sg-item-text">Where applicable, research involving human or animal subjects must be approved by an appropriate institutional ethics committee in accordance with the legal and ethical requirements of the study's country.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 2 ── -->
+    <div class="sg-section sg-obs sg-d1" id="sg-s2">
+      <div class="sg-section-head">
+        <div class="sg-section-num">02</div>
+        <div class="sg-section-title">Abstract Content &amp; Structure</div>
+        <div class="sg-section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+      </div>
+      <div class="sg-section-body">
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Paper Structure</div>
+            <div class="sg-item-text">To maximise the likelihood of acceptance and reviewer engagement, papers must feature a well-structured study design, a logical research argument, a concise and informative title, and a standalone abstract.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Author Listing &amp; Order</div>
+            <div class="sg-item-text">All authors must be listed in strict order of contribution or academic rank (rank-wise) during the initial submission.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Language</div>
+            <div class="sg-item-text">All submissions must be written in clear, grammatically correct English.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">AI and Similarity Policy</div>
+            <div class="sg-item-text">The similarity index for any submitted abstract must be strictly below 20% as verified by plagiarism detection software. The unauthorised or uncredited use of generative AI for text production is strictly prohibited.</div>
+          </div>
+        </div>
+        <!-- Spec grid -->
+        <div class="sg-spec-grid">
+          <div class="sg-spec-card">
+            <div class="sg-spec-label">Word Count</div>
+            <div class="sg-spec-value">200 – 300 words</div>
+          </div>
+          <div class="sg-spec-card">
+            <div class="sg-spec-label">Keywords</div>
+            <div class="sg-spec-value">3 to 5, separated by semicolons</div>
+          </div>
+          <div class="sg-spec-card">
+            <div class="sg-spec-label">Similarity Index</div>
+            <div class="sg-spec-value">Strictly below 20%</div>
+          </div>
+          <div class="sg-spec-card">
+            <div class="sg-spec-label">Language</div>
+            <div class="sg-spec-value">English only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 3 ── -->
+    <div class="sg-section sg-obs sg-d2" id="sg-s3">
+      <div class="sg-section-head">
+        <div class="sg-section-num">03</div>
+        <div class="sg-section-title">Formatting &amp; Template</div>
+        <div class="sg-section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+      </div>
+      <div class="sg-section-body">
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">File Format</div>
+            <div class="sg-item-text">Submissions must be uploaded exclusively in Microsoft Word (.docx) format.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Style Guide</div>
+            <div class="sg-item-text">Authors must strictly follow the official conference layout. Please download and apply the formatting rules from the template below.</div>
+          </div>
+        </div>
+        <!-- Download CTA -->
+        <div class="sg-cta-card" style="margin:16px 24px 18px;">
+          <div class="sg-cta-left">
+            <div class="sg-cta-eyebrow">Official Template</div>
+            <div class="sg-cta-title">Download Conference Template</div>
+            <div class="sg-cta-sub">Microsoft Word (.docx) — formatting guide included</div>
+          </div>
+          <!-- Replace # with your template download link -->
+          <a href="#YOUR-TEMPLATE-LINK-HERE" class="sg-cta-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION 4 ── -->
+    <div class="sg-section sg-obs sg-d3" id="sg-s4">
+      <div class="sg-section-head">
+        <div class="sg-section-num">04</div>
+        <div class="sg-section-title">Key Dates &amp; Submission Process</div>
+        <div class="sg-section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+      </div>
+      <div class="sg-section-body">
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">How to Submit</div>
+            <div class="sg-item-text">All submissions must be managed electronically via the official conference submission portal. Use the button below when the portal opens.</div>
+          </div>
+        </div>
+        <div class="sg-item">
+          <div class="sg-item-dot"></div>
+          <div class="sg-item-content">
+            <div class="sg-item-label">Important Deadlines</div>
+            <div class="sg-item-text">Refer to the Important Dates page for all submission, review, and registration deadlines. Mark your calendar and submit well ahead of the deadline.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SUBMIT BANNER ── -->
+    <div class="sg-submit-banner sg-obs">
+      <div class="sg-submit-left">
+        <div class="sg-submit-label">Conference Submission Portal</div>
+        <div class="sg-submit-title">Ready to Submit Your Paper?</div>
+        <div class="sg-submit-sub">All submissions are managed through the official online portal.</div>
+        <!-- Replace # with your important dates link -->
+        <a href="#YOUR-IMPORTANT-DATES-LINK-HERE" class="sg-dates-link">
+          View Important Dates &amp; Deadlines
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <!-- Local review portal (php -S localhost:8000 -t public in icscientec-review/).
+           Update to the real deployed portal URL once it's hosted. -->
+      <a href="http://localhost:8000/auth/login.php" class="sg-submit-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Submit Your Paper
+      </a>
+    </div>
+
+  </div><!-- end body -->
+</div><!-- end wrap -->
+
+<script>
+(function(){
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.sg-obs, #sgNav').forEach(el => obs.observe(el));
+
+  // Smooth scroll for nav pills
+  document.querySelectorAll('.sg-nav-pill').forEach(pill => {
+    pill.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(pill.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+</script>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">ICSciEnTec</div>
+      <p class="footer-tagline">International Conference on Science, Engineering &amp; Technology — organised by IEEE R10 Bhutan Subsection, College of Science and Technology (CST-RUB), and Construction Development Corporation Limited (CDCL).</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <div class="footer-col-title">Conference</div>
+        <div class="footer-links">
+          <a class="footer-link" href="about-icscientec.html">About ICSciEnTec</a>
+          <a class="footer-link" href="venue.html">Venue</a>
+          <a class="footer-link" href="editorial-process.html">Editorial Process</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Participate</div>
+        <div class="footer-links">
+          <a class="footer-link" href="abstract-submission-guidelines.html">Abstract Submission</a>
+          <a class="footer-link" href="full-paper-submission-guidelines.html">Full Paper Submission</a>
+          <a class="footer-link" href="conference-fee-details.html">Registration &amp; Fees</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a class="footer-link" href="mailto:secretary_icscientec.cst@rub.edu.bt">secretary_icscientec.cst@rub.edu.bt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2027 ICSciEnTec. All rights reserved.</span>
+    <span class="footer-copy">College of Science and Technology, Royal University of Bhutan</span>
+  </div>
+</footer>
+
+<script>
+
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (!menu) return;
+  const open = menu.classList.toggle('open');
+  const btn  = document.getElementById('hamburger');
+  const spans = btn.querySelectorAll('span');
+  spans[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)'   : '';
+  spans[1].style.opacity   = open ? '0' : '1';
+  spans[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+}
+document.querySelectorAll('.nav-item').forEach(item => {
+  const trigger = item.querySelector(':scope > a.nav-link[href="#"]');
+  if (!trigger) return;
+  trigger.addEventListener('click', e => {
+    e.preventDefault();
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+document.addEventListener('click', e => {
+  document.querySelectorAll('.nav-item.open').forEach(item => { if (!item.contains(e.target)) item.classList.remove('open'); });
+});
+document.querySelectorAll('.nav-mobile-menu a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+
+</script>
+</body>
+</html>

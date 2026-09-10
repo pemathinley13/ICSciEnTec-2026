@@ -1,0 +1,152 @@
+/* ICSciEnTec Review Portal — shares the marketing site's teal/gold identity */
+:root {
+  --teal: #1a6577;
+  --teal-d: #0f4655;
+  --teal-l: #237a90;
+  --gold: #C69444;
+  --dark: #1e2f3c;
+  --muted: #5a7a8a;
+  --body-bg: #f3f8fa;
+  --white: #fff;
+  --border: #d7e6ea;
+  --danger: #b3261e;
+  --danger-bg: #fdecea;
+  --success: #1a6050;
+  --success-bg: #e8f6f1;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; font-family: 'Inter', sans-serif; background: var(--body-bg); color: var(--dark);
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+a { color: var(--teal); }
+
+.topbar {
+  background: var(--teal-d); color: #fff; padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name { color: #fff; font-weight: 800; font-size: 18px; }
+.brand-sub { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.topnav { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.topnav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: 14px; font-weight: 500; }
+.topnav a.active, .topnav a:hover { color: #fff; }
+.topnav-user { color: var(--gold); font-size: 13px; font-weight: 600; }
+.logout-link { border: 1px solid rgba(255,255,255,.3); padding: 5px 12px; border-radius: 6px; }
+
+.page { flex: 1; max-width: 1040px; margin: 0 auto; padding: 32px 24px 60px; width: 100%; }
+
+.sitefooter { text-align: center; padding: 20px; font-size: 12px; color: var(--muted); }
+
+.card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+  padding: 28px 30px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(15,70,85,.05);
+}
+h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -.01em; }
+h2 { font-size: 19px; margin: 0 0 14px; }
+p.lede { color: var(--muted); margin: 0 0 24px; }
+
+.alert { padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
+.alert-success { background: var(--success-bg); color: var(--success); border: 1px solid rgba(26,96,80,.2); }
+.alert-error   { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(179,38,30,.2); }
+
+label { display: block; font-size: 13px; font-weight: 600; margin: 16px 0 6px; }
+label:first-child { margin-top: 0; }
+input[type=text], input[type=email], input[type=password], input[type=date],
+textarea, select {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+  font-family: inherit; font-size: 14px; color: var(--dark); background: #fff;
+}
+textarea { min-height: 120px; resize: vertical; }
+.field-error { color: var(--danger); font-size: 12.5px; margin-top: 4px; }
+.field-hint { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+
+.btn-primary {
+  background: var(--teal); color: #fff; border: none; padding: 11px 22px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { background: var(--teal-l); }
+.btn-secondary {
+  background: none; color: var(--teal); border: 1px solid var(--teal); padding: 10px 20px;
+  border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+
+.status-pill {
+  display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 20px;
+  font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  background: rgba(26,101,119,0.1); color: var(--teal);
+}
+.status-pill.rejected, .status-pill.desk_rejected { background: var(--danger-bg); color: var(--danger); }
+.status-pill.accepted, .status-pill.published, .status-pill.camera_ready_approved { background: var(--success-bg); color: var(--success); }
+.status-pill.draft { background: #eee; color: #666; }
+
+.author-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: center; }
+.author-row input { flex: 1; }
+.author-row button { flex-shrink: 0; }
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+.timeline li:last-child { border-bottom: none; }
+.timeline .ts { color: var(--muted); font-size: 12px; }
+
+/* ════ PORTAL HERO — matches the marketing site's dark teal/gold hero band ════ */
+.portal-hero {
+  width: 100vw; position: relative; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, #0a2530 0%, #0d3548 55%, #0a2530 100%);
+  padding: 64px 24px 56px; text-align: center; overflow: hidden;
+  margin-bottom: 40px;
+}
+.portal-hero::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 400px; height: 400px; border-radius: 50%;
+  border: 1px solid rgba(198,148,68,0.08); pointer-events: none;
+}
+.portal-hero::after {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  border: 1px solid rgba(26,101,119,0.14); pointer-events: none;
+}
+.portal-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(198,148,68,0.1); border: 1px solid rgba(198,148,68,0.25);
+  border-radius: 20px; padding: 6px 16px; margin-bottom: 20px;
+  font-size: 10.5px; font-weight: 700; color: var(--gold);
+  letter-spacing: 0.16em; text-transform: uppercase; position: relative; z-index: 1;
+}
+.portal-hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.portal-hero h1 {
+  color: #fff; font-size: clamp(26px, 4vw, 38px); font-weight: 800;
+  letter-spacing: -0.02em; margin-bottom: 12px; position: relative; z-index: 1;
+}
+.portal-hero h1 .gold { color: var(--gold); }
+.portal-hero p {
+  color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; font-size: 15px;
+  line-height: 1.7; position: relative; z-index: 1;
+}
+.portal-hero-bar { width: 40px; height: 2px; background: var(--gold); border-radius: 2px; margin: 22px auto 0; position: relative; z-index: 1; }
+
+.auth-card { max-width: 440px; margin: 0 auto 20px; }
+.auth-card::before {
+  content: ''; display: block; height: 3px; margin: -28px -30px 24px;
+  background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 14px 14px 0 0;
+}
+.form-footnote { font-size: 13.5px; color: var(--muted); text-align: center; }
+
+/* section-style card used on the submission form */
+.form-section { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+.form-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.form-section-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.form-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+@media (max-width: 640px) {
+  .topbar { padding: 12px 16px; }
+  .page { padding: 20px 16px 48px; }
+  .portal-hero { padding: 48px 20px 40px; margin-bottom: 28px; }
+}
