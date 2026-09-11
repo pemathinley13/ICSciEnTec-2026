@@ -715,14 +715,6 @@ body {
   text-align: center;
   margin-bottom: 52px;
 }
-.section-eyebrow-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(26,101,119,0.07); border: 1px solid rgba(26,101,119,0.14);
-  border-radius: 20px; padding: 6px 16px; margin-bottom: 16px;
-  font-size: 10.5px; font-weight: 700; color: var(--teal);
-  letter-spacing: 0.18em; text-transform: uppercase;
-}
-.section-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
 .section-heading {
   font-size: var(--font-lg); font-weight: 800; color: var(--dark);
   letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 10px;
@@ -748,64 +740,26 @@ body {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 26px;
 }
 
+/* Simple, traditional partner card: logo on top, name + description below. */
 .pv-tile {
-  width: 210px; height: 230px; border-radius: 18px;
+  width: 220px; border-radius: 14px;
   background: var(--white); border: 1px solid rgba(26,101,119,0.12);
-  position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center; padding: 30px;
-  box-shadow: 0 4px 18px rgba(26,101,119,0.06);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 12px; padding: 28px 20px;
+  box-shadow: 0 2px 12px rgba(26,101,119,0.05);
   opacity: 0; transform: translateY(18px);
-  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.35s cubic-bezier(0.22,1,0.36,1),
-              box-shadow 0.35s, border-color 0.35s;
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
 .pv-tile.pv-in { opacity: 1; transform: translateY(0); }
 .pv-tile:nth-child(2) { transition-delay: 0.06s; }
-.pv-tile:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 44px rgba(26,101,119,0.18);
-  border-color: rgba(26,101,119,0.24);
-}
-.pv-tile img {
-  max-width: 100%; max-height: 100%; object-fit: contain;
-  filter: grayscale(15%) opacity(0.9);
-  transition: filter 0.3s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1);
-}
-.pv-tile:hover img { filter: grayscale(0%) opacity(1); transform: scale(1.08) translateY(-14px); }
-.pv-fallback {
-  font-size: 20px; font-weight: 800; color: var(--teal);
-  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
-}
-.pv-tile:hover .pv-fallback { transform: scale(1.08) translateY(-14px); }
-
-.pv-overlay {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(10,37,48,0) 0%, rgba(10,37,48,0.92) 45%, rgba(9,33,43,0.98) 100%);
-  padding: 34px 16px 18px;
-  display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center;
-  transform: translateY(72%);
-  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
-}
-.pv-tile:hover .pv-overlay { transform: translateY(0); }
-.pv-badge {
-  font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 3px 10px; border-radius: 20px;
-}
-.pv-badge.lead     { background: rgba(198,148,68,0.2); color: #f0cd85; border: 1px solid rgba(198,148,68,0.45); }
-.pv-badge.academic { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
-.pv-name { font-size: 13.5px; font-weight: 800; color: #fff; line-height: 1.3; }
-.pv-desc {
-  font-size: 11px; color: rgba(255,255,255,0.72); line-height: 1.55;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-  opacity: 0; transition: opacity 0.3s ease 0.05s;
-}
-.pv-tile:hover .pv-desc { opacity: 1; }
+.pv-logo { height: 64px; display: flex; align-items: center; justify-content: center; }
+.pv-tile img { max-width: 160px; max-height: 64px; object-fit: contain; }
+.pv-fallback { font-size: 18px; font-weight: 800; color: var(--teal); }
+.pv-name { font-size: 14px; font-weight: 800; color: var(--dark); line-height: 1.35; }
+.pv-desc { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
 
 @media (max-width: 700px) {
-  .pv-tile { width: 150px; height: 190px; padding: 22px; }
-  .pv-overlay { transform: translateY(0); padding: 20px 12px 14px;
-    background: linear-gradient(180deg, rgba(10,37,48,0) 0%, rgba(10,37,48,0.88) 55%, rgba(9,33,43,0.97) 100%); }
-  .pv-desc { opacity: 1; -webkit-line-clamp: 2; }
-  .pv-tile img, .pv-tile .pv-fallback { transform: translateY(-10px); }
+  .pv-tile { width: 165px; padding: 22px 16px; }
 }
 
 /* ════════════════════════════════════════
@@ -1131,14 +1085,10 @@ body {
 <!-- ════ PARTNERS — SPOTLIGHT TILES ════ -->
 <div class="op-section">
   <div class="section-header">
-    <div class="section-eyebrow-pill">
-      <span class="section-eyebrow-dot"></span>
-      Our Partners
-    </div>
     <h2 class="section-heading">Organising &amp; Knowledge Partners</h2>
     <p class="section-sub-text">
       ICSciEnTec 2027 is made possible through the leadership of our organising institutions
-      and the academic depth of our knowledge partners. Hover a tile to learn more.
+      and the academic depth of our knowledge partners.
     </p>
     <div class="section-divider"></div>
   </div>
@@ -1149,24 +1099,22 @@ body {
 
       <!-- CST -->
       <div class="pv-tile">
-        <img src="../images/cstlogo176-1.png" alt="CST logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pv-fallback" style="display:none;">CST</div>
-        <div class="pv-overlay">
-          <span class="pv-badge lead">Lead Organiser</span>
-          <div class="pv-name">College of Science and Technology</div>
-          <p class="pv-desc">A constituent college of the Royal University of Bhutan, dedicated to excellence in engineering, science and applied research.</p>
+        <div class="pv-logo">
+          <img src="../images/cstlogo176-1.png" alt="CST logo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="pv-fallback" style="display:none;">CST</div>
         </div>
+        <div class="pv-name">College of Science and Technology</div>
+        <p class="pv-desc">A constituent college of the Royal University of Bhutan, dedicated to excellence in engineering, science and applied research.</p>
       </div>
 
       <!-- CDCL -->
       <div class="pv-tile">
-        <div class="pv-fallback">CDCL</div>
-        <div class="pv-overlay">
-          <span class="pv-badge lead">Lead Organiser</span>
-          <div class="pv-name">Construction Development Corporation Limited</div>
-          <p class="pv-desc">A premier construction and infrastructure development organisation delivering quality engineering solutions across Bhutan.</p>
+        <div class="pv-logo">
+          <div class="pv-fallback">CDCL</div>
         </div>
+        <div class="pv-name">Construction Development Corporation Limited</div>
+        <p class="pv-desc">A premier construction and infrastructure development organisation delivering quality engineering solutions across Bhutan.</p>
       </div>
 
     </div>
@@ -1178,24 +1126,22 @@ body {
 
       <!-- CST -->
       <div class="pv-tile">
-        <img src="../images/cstlogo176-1.png" alt="CST logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pv-fallback" style="display:none;">CST</div>
-        <div class="pv-overlay">
-          <span class="pv-badge academic">Knowledge Partner</span>
-          <div class="pv-name">College of Science and Technology</div>
+        <div class="pv-logo">
+          <img src="../images/cstlogo176-1.png" alt="CST logo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="pv-fallback" style="display:none;">CST</div>
         </div>
+        <div class="pv-name">College of Science and Technology</div>
       </div>
 
       <!-- JNEC -->
       <div class="pv-tile">
-        <img src="../images/jnec-1.jpg" alt="JNEC logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pv-fallback" style="display:none;">JN</div>
-        <div class="pv-overlay">
-          <span class="pv-badge academic">Knowledge Partner</span>
-          <div class="pv-name">Jigme Namgyel Engineering College</div>
+        <div class="pv-logo">
+          <img src="../images/jnec-1.jpg" alt="JNEC logo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="pv-fallback" style="display:none;">JN</div>
         </div>
+        <div class="pv-name">Jigme Namgyel Engineering College</div>
       </div>
 
     </div>
