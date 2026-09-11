@@ -7,7 +7,7 @@
 return [
     'app' => [
         // Base URL the app is served from, no trailing slash. Used for building
-        // links in emails. e.g. 'https://review.icscientec.cst.edu.bt'
+        // links in emails. e.g. 'https://review.cst.edu.bt'
         'base_url' => 'http://localhost:8000',
         // true only once served over HTTPS — flips the session cookie's Secure flag.
         'https' => false,
