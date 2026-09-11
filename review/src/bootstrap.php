@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+// Never leak stack traces/paths to visitors; still log everything server-side.
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
+error_reporting(E_ALL);
+
 date_default_timezone_set('Asia/Thimphu');
 
 // Minimal PSR-4-ish autoloader for the App\ namespace — no Composer required,

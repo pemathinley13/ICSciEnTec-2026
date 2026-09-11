@@ -24,8 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = 'Incorrect email or password.';
         } else {
             Session::login((int) $user['id']);
-            $redirect = $_SESSION['redirect_after_login'] ?? User::defaultDashboardUrl((int) $user['id']);
+            $redirect = $_SESSION['redirect_after_login'] ?? null;
             unset($_SESSION['redirect_after_login']);
+            // Only ever redirect to a same-app path (starts with exactly one "/"),
+            // never a protocol-relative or absolute URL — closes an open-redirect.
+            if (!is_string($redirect) || $redirect === '' || $redirect[0] !== '/' || str_starts_with($redirect, '//')) {
+                $redirect = User::defaultDashboardUrl((int) $user['id']);
+            }
             header('Location: ' . $redirect);
             exit;
         }
