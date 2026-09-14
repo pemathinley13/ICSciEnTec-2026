@@ -165,5 +165,18 @@ final class Submission
             ->execute([$newStatus, $submissionId]);
 
         \App\Services\AuditLogger::log($submissionId, $actorUserId, 'status_updated', $current['status'], $newStatus);
+
+        if ($newStatus !== $current['status']) {
+            $author = \App\Models\User::findById((int) $current['corresponding_author_id']);
+            if ($author) {
+                \App\Services\EmailService::send('status_update', $author['email'], [
+                    'authorName'      => $author['full_name'],
+                    'submissionTitle' => $current['title'],
+                    'submissionId'    => $submissionId,
+                    'newStatus'       => $newStatus,
+                    'baseUrl'         => config('app.base_url'),
+                ], $submissionId);
+            }
+        }
     }
 }
