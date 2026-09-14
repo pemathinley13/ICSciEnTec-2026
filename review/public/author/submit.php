@@ -67,14 +67,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $storedManuscript
                 );
 
-                // Confirmation to the author.
-                \App\Services\EmailService::send('submission_received', $user['email'], [
-                    'authorName'      => $user['full_name'],
-                    'submissionTitle' => trim($_POST['title']),
-                    'submissionId'    => $submissionId,
-                    'trackName'       => Submission::trackName((int) $_POST['track_id']),
-                    'baseUrl'         => config('app.base_url'),
-                ], $submissionId);
+                // Confirmation to the submitting author and every co-author listed
+                // on the paper (deduped by email address).
+                $notifiedEmails = [];
+                foreach ($authors as $author) {
+                    $recipientEmail = $author['email'] !== '' ? $author['email'] : $user['email'];
+                    $recipientEmail = strtolower(trim($recipientEmail));
+                    if ($recipientEmail === '' || isset($notifiedEmails[$recipientEmail])) {
+                        continue;
+                    }
+                    $notifiedEmails[$recipientEmail] = true;
+                    \App\Services\EmailService::send('submission_received', $recipientEmail, [
+                        'authorName'      => $author['name'],
+                        'submissionTitle' => trim($_POST['title']),
+                        'submissionId'    => $submissionId,
+                        'trackName'       => Submission::trackName((int) $_POST['track_id']),
+                        'baseUrl'         => config('app.base_url'),
+                    ], $submissionId);
+                }
 
                 // Heads-up to every Organizing Committee member.
                 foreach (User::listByRole(User::ROLE_ORGANIZING_COMMITTEE) as $admin) {

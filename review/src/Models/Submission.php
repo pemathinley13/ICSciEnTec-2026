@@ -167,10 +167,15 @@ final class Submission
         \App\Services\AuditLogger::log($submissionId, $actorUserId, 'status_updated', $current['status'], $newStatus);
 
         if ($newStatus !== $current['status']) {
-            $author = \App\Models\User::findById((int) $current['corresponding_author_id']);
-            if ($author) {
-                \App\Services\EmailService::send('status_update', $author['email'], [
-                    'authorName'      => $author['full_name'],
+            $notified = [];
+            foreach (self::authorsFor($submissionId) as $coAuthor) {
+                $email = strtolower(trim($coAuthor['email'] ?? ''));
+                if ($email === '' || isset($notified[$email])) {
+                    continue;
+                }
+                $notified[$email] = true;
+                \App\Services\EmailService::send('status_update', $email, [
+                    'authorName'      => $coAuthor['name'],
                     'submissionTitle' => $current['title'],
                     'submissionId'    => $submissionId,
                     'newStatus'       => $newStatus,

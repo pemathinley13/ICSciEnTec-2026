@@ -35,9 +35,15 @@ final class SubmissionValidator
         if (empty($authorNames) || trim($authorNames[0] ?? '') === '') {
             $errors['authors'] = 'At least one author is required.';
         } else {
-            foreach ($authorEmails as $email) {
-                if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $errors['authors'] = 'One or more author emails are invalid.';
+            // Every author with a name needs a valid, deliverable-looking email —
+            // status update and confirmation notifications are sent to it.
+            foreach ($authorNames as $i => $name) {
+                if (trim($name) === '') {
+                    continue;
+                }
+                $email = trim($authorEmails[$i] ?? '');
+                if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $errors['authors'] = 'Please enter a valid email address for every author.';
                     break;
                 }
             }
