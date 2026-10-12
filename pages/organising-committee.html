@@ -406,6 +406,18 @@ body {
   gap: 22px;
   margin-bottom: 60px;
 }
+
+/* ── Chair / Convener — centred pair (Co-Chair removed), enlarged for presence ── */
+.em-chair-wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+.em-chair-card { padding: 44px 40px 36px; max-width: 320px; width: 100%; }
+.em-pic-chair  { width: 150px; height: 150px; margin-bottom: 22px; }
+.em-chair-wrap .em-pic-wrap { background: #fff; }
 .em-three-card { padding: 36px 24px 30px; }
 
 /* ════════════════════════════════════
@@ -479,13 +491,13 @@ body {
 
     <div class="em-divider"></div>
 
-    <!-- ══ 2. THREE-COLUMN: Chair / Co-Chair / Convener ══ -->
-    
-    <div class="em-three-col">
+    <!-- ══ 2. CHAIR / CONVENER — centred pair (Co-Chair removed) ══ -->
+
+    <div class="em-chair-wrap">
       <!-- Chair -->
-      <div class="em-card em-three-card em-obs em-d1">
-        <div class="em-pic-wrap em-pic-md">
-          <img src="../images/president2.png" alt="Dr. Tshewang Lhendup">
+      <div class="em-card em-chair-card em-obs em-d1">
+        <div class="em-pic-wrap em-pic-chair">
+          <img src="../images/president2.png" alt="Dr. Tshewang Lhendup" style="object-fit: contain; object-position: center;">
         </div>
         <div class="em-role-tag em-tag-leader" style="font-size: 12px">Conference Chair</div>
         <div class="em-name-md">Dr. Tshewang Lhendup</div>
@@ -493,20 +505,9 @@ body {
         <div class="em-affil">CST, RUB</div>
       </div>
 
-      <!-- Co-Chair -->
-      <div class="em-card em-three-card em-obs em-d2">
-        <div class="em-pic-wrap em-pic-md">
-          <img src="../images/tenzin.png" alt="Mr. Tenzin Jamtsho">
-        </div>
-        <div class="em-role-tag em-tag-leader" style="font-size: 12px">Co-Chair</div>
-        <div class="em-name-md">Mr. Tenzin Jamtsho</div>
-        <div class="em-title">CEO</div>
-        <div class="em-affil">CDCL</div>
-      </div>
-
       <!-- Convener -->
-      <div class="em-card em-three-card em-obs em-d3">
-        <div class="em-pic-wrap em-pic-md">
+      <div class="em-card em-chair-card em-obs em-d3">
+        <div class="em-pic-wrap em-pic-chair">
           <img src="../images/sangey.png" alt="Dr. Sangey Pasang">
         </div>
         <div class="em-role-tag em-tag-convener" style="font-size: 12px">Convener</div>
@@ -579,42 +580,32 @@ body {
          
         </div>
 
-        <div class="em-card em-sec-card em-obs em-d2">
-          <div class="em-pic-wrap em-pic-sm">
-            <img src="../images/lok.jpeg" alt="Mr. Lok Bahadur Ghalley">
-          </div>
-          <div class="em-name-sm">Mr. Lok Bahadur Ghalley</div>
-          <div class="em-title">General Manager</div>
-          <div class="em-affil">Corporate Strategy Office, CDCL</div>
-        
-        </div>
-
         <div class="em-card em-sec-card em-obs em-d3">
           <div class="em-pic-wrap em-pic-sm">
-            <img src="https://icscientec.cst.edu.bt/wp-test/wp-content/uploads/2026/03/cdcl.png" alt="Ms. Dorji Tshomo Tshering">
+            <img src="../images/sonamwangmo.jpg" alt="Sonam Wangmo">
           </div>
-          <div class="em-name-sm">Ms. Dorji Tshomo Tshering</div>
-          <div class="em-title">Architect / Organising Secretary</div>
-          <div class="em-affil">CDCL</div>
+          <div class="em-name-sm">Sonam Wangmo</div>
+          <div class="em-title">Chief, Research and Development Division</div>
+          <div class="em-affil">RUB</div>
           
         </div>
         
         <div class="em-card em-sec-card em-obs em-d3">
           <div class="em-pic-wrap em-pic-sm">
-            <img src="https://icscientec.cst.edu.bt/wp-test/wp-content/uploads/2026/06/cdcl2-scaled.jpeg" alt="Ms. Dorji Tshomo Tshering">
+            <img src="../images/sangaylhamo.png" alt="Ms. Sangay Lhamo">
           </div>
-          <div class="em-name-sm">Mr. Sonam Tobgay</div>
-          <div class="em-title">Business Analyst / Co-Vice Chair</div>
-          <div class="em-affil">CDCL</div>
+          <div class="em-name-sm">Ms. Sangay Lhamo</div>
+          <div class="em-title">Research Officer</div>
+          <div class="em-affil">RUB</div>
           
         </div>
         <div class="em-card em-sec-card em-obs em-d3">
           <div class="em-pic-wrap em-pic-sm">
-            <img src="../images/gobin.jpeg" alt="Ms. Dorji Tshomo Tshering">
+            <img src="../images/dorjigyeltshen.png" alt="Mr. Dorji Gyeltshen Nesor">
           </div>
-          <div class="em-name-sm">Mr. Gobin Rai</div>
-          <div class="em-title">Engineer / Co-Secretary</div>
-          <div class="em-affil">CDCL</div>
+          <div class="em-name-sm">Mr. Dorji Gyeltshen Nesor</div>
+          <div class="em-title">Research Officer</div>
+          <div class="em-affil">RUB</div>
          
         </div>
 
