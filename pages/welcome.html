@@ -1355,5 +1355,89 @@ document.addEventListener('click', e => {
 document.querySelectorAll('.nav-mobile-menu a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 
 </script>
+
+<!-- ===== CST Silver Jubilee Popup ===== -->
+<style>
+  #sj-overlay {
+    position: fixed; inset: 0; z-index: 99999;
+    display: none; align-items: center; justify-content: center;
+    padding: 16px; background: rgba(10, 30, 40, 0.6);
+    opacity: 0; transition: opacity .4s ease;
+    font-family: 'Inter', sans-serif;
+  }
+  #sj-overlay.show { display: flex; }
+  #sj-overlay.visible { opacity: 1; }
+  #sj-box {
+    width: 100%; max-width: 860px;
+    background: #fff; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 70px rgba(10,30,40,.5);
+    transform: scale(.94); transition: transform .4s cubic-bezier(0.22,1,0.36,1);
+  }
+  #sj-overlay.visible #sj-box { transform: scale(1); }
+  #sj-box img { display: block; width: 100%; height: auto; }
+  #sj-footer {
+    display: flex; align-items: center; justify-content: center;
+    padding: 18px 16px; background: #0f4655;
+  }
+  #sj-continue {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 12px 32px; border-radius: 30px; cursor: pointer;
+    background: transparent; border: 1.5px solid #C69444; color: #C69444;
+    transition: background .25s ease, color .25s ease, opacity .25s ease;
+  }
+  #sj-continue:hover:not(:disabled) { background: #C69444; color: #0f4655; }
+  #sj-continue:disabled { opacity: .55; cursor: default; }
+</style>
+
+<div id="sj-overlay" role="dialog" aria-modal="true" aria-label="CST Silver Jubilee">
+  <div id="sj-box">
+    <img src="../images/cst-silver-jubilee-popup.jpg"
+         alt="Celebrating 25th Foundation Day of College of Science and Technology, 26 September 2026 to 26 September 2027">
+    <div id="sj-footer">
+      <button id="sj-continue" disabled>Continue in 5s</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var AD_SECONDS = 5;
+  var SHOW_ONCE_PER_VISIT = true;
+
+  var overlay = document.getElementById("sj-overlay");
+  var btn = document.getElementById("sj-continue");
+
+  function openPopup() {
+    try { if (SHOW_ONCE_PER_VISIT && sessionStorage.getItem("sjSeen")) return; } catch (e) {}
+    overlay.classList.add("show");
+    requestAnimationFrame(function () { overlay.classList.add("visible"); });
+
+    var left = AD_SECONDS;
+    btn.textContent = "Continue in " + left + "s";
+    var timer = setInterval(function () {
+      left--;
+      if (left > 0) {
+        btn.textContent = "Continue in " + left + "s";
+      } else {
+        clearInterval(timer);
+        btn.disabled = false;
+        btn.textContent = "Click to Continue →";
+        btn.focus();
+      }
+    }, 1000);
+  }
+
+  function closePopup() {
+    try { sessionStorage.setItem("sjSeen", "1"); } catch (e) {}
+    overlay.classList.remove("visible");
+    setTimeout(function () { overlay.classList.remove("show"); }, 400);
+  }
+
+  btn.onclick = closePopup;
+  window.addEventListener("load", function () { setTimeout(openPopup, 500); });
+})();
+</script>
+<!-- ===== End of popup ===== -->
 </body>
 </html>
