@@ -287,35 +287,11 @@ body {
 /* ═══ HERO ═══ */
 .fp-hero {
   position: relative;
-  background: linear-gradient(135deg, #0a2530 0%, #0d3548 55%, #0a2530 100%);
+  background: #1a4a5c;
   padding: 92px var(--pad) 84px;
   text-align: center;
-  overflow: hidden;
 }
-.fp-hero::before {
-  content: ''; position: absolute; top: -130px; right: -130px;
-  width: 560px; height: 560px; border-radius: 50%;
-  border: 1px solid rgba(198,148,68,0.07);
-  animation: fpSpin 32s linear infinite; pointer-events: none;
-}
-.fp-hero::after {
-  content: ''; position: absolute; bottom: -90px; left: -90px;
-  width: 400px; height: 400px; border-radius: 50%;
-  border: 1px solid rgba(26,101,119,0.1);
-  animation: fpSpin 22s linear infinite reverse; pointer-events: none;
-}
-@keyframes fpSpin { to { transform: rotate(360deg); } }
 
-.fp-hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(198,148,68,0.1); border: 1px solid rgba(198,148,68,0.22);
-  border-radius: 20px; padding: 7px 18px; margin-bottom: 24px;
-  font-size: 10.5px; font-weight: 600; color: var(--gold);
-  letter-spacing: 0.18em; text-transform: uppercase;
-  position: relative; z-index: 2;
-  opacity: 0; animation: fpUp 0.7s 0.15s cubic-bezier(0.22,1,0.36,1) forwards;
-}
-.fp-hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 .fp-hero-title {
   font-size: clamp(30px, 4.5vw, 48px); font-weight: 800;
   color: #fff; letter-spacing: -0.03em; line-height: 1.08;
@@ -338,30 +314,25 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══ QUICK NAV ═══ */
+/* ═══ QUICK NAV — plain text links, no button styling ═══ */
 .fp-nav {
   background: var(--white);
   border-bottom: 1px solid rgba(26,101,119,0.08);
   padding: 18px var(--pad);
-  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  display: flex; gap: 10px 26px; flex-wrap: wrap; justify-content: center;
   opacity: 0; transform: translateY(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .fp-nav.in-view { opacity: 1; transform: translateY(0); }
-.fp-nav-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 16px; border-radius: 20px;
-  font-size: 12px; font-weight: 600; color: var(--teal);
-  background: rgba(26,101,119,0.07);
-  border: 1px solid rgba(26,101,119,0.14);
+.fp-nav-link {
+  font-size: 17px; font-weight: 600; color: var(--teal-d);
   text-decoration: none; cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
 }
-.fp-nav-pill span { font-size: 10px; opacity: 0.65; }
-.fp-nav-pill:hover {
-  background: var(--teal); color: #fff; border-color: var(--teal);
-  transform: translateY(-2px); box-shadow: 0 4px 14px rgba(26,101,119,0.22);
-}
+.fp-nav-link:hover { color: var(--teal); border-color: var(--teal); }
+.fp-nav-link span { color: var(--muted); font-weight: 700; margin-right: 5px; }
 
 /* ═══ BODY ═══ */
 .fp-body {
@@ -386,127 +357,65 @@ body {
 /* ═══ SECTION CARD ═══ */
 .fp-section {
   background: var(--white);
-  border-radius: 18px;
   border: 1px solid rgba(26,101,119,0.1);
-  border-left: 4px solid transparent;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  transition:
-    border-left-color 0.3s,
-    box-shadow 0.3s,
-    transform 0.32s cubic-bezier(0.22,1,0.36,1);
-}
-.fp-section:hover {
-  border-left-color: var(--teal);
-  box-shadow: 0 14px 48px rgba(26,101,119,0.1), -3px 0 0 rgba(198,148,68,0.35);
-  transform: translateY(-3px) perspective(1000px) rotateX(0.6deg);
+  border-left: 3px solid var(--teal);
 }
 
 .fp-section-head {
-  padding: 22px 28px;
-  display: flex; align-items: center; gap: 14px;
-  background: rgba(26,101,119,0.03);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 14px;
+  padding: 20px 28px;
   border-bottom: 1px solid rgba(26,101,119,0.07);
 }
-.fp-section-num {
-  width: 36px; height: 36px; border-radius: 9px;
-  background: rgba(26,101,119,0.09); border: 1px solid rgba(26,101,119,0.16);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 800; color: var(--teal); flex-shrink: 0;
-  transition: background 0.25s, color 0.25s;
-}
-.fp-section:hover .fp-section-num { background: var(--teal); color: #fff; }
-.fp-section-title { font-size: 16px; font-weight: 800; color: var(--dark); letter-spacing: -0.01em; flex: 1; }
-.fp-section-icon {
-  width: 30px; height: 30px; border-radius: 7px;
-  background: rgba(198,148,68,0.1); border: 1px solid rgba(198,148,68,0.18);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  transition: background 0.25s;
-}
-.fp-section:hover .fp-section-icon { background: rgba(198,148,68,0.2); }
-.fp-section-icon svg { width: 14px; height: 14px; stroke: var(--gold); }
+.fp-section-num { font-size: 17px; font-weight: 800; color: var(--teal); }
+.fp-section-title { font-size: 21px; font-weight: 800; color: var(--dark); letter-spacing: -0.01em; line-height: 1.25; }
 
-/* ═══ ITEMS ═══ */
+/* ═══ ITEMS — label + description grid ═══ */
 .fp-item {
-  display: flex; align-items: flex-start; gap: 14px;
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 8px 24px;
   padding: 17px 28px;
   border-bottom: 1px solid rgba(26,101,119,0.05);
-  transition: background 0.2s, padding-left 0.25s;
-  cursor: default;
 }
 .fp-item:last-child { border-bottom: none; }
-.fp-item:hover { background: #f8fcfe; padding-left: 34px; }
 
-.fp-item-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(26,101,119,0.22); flex-shrink: 0; margin-top: 6px;
-  transition: background 0.22s, transform 0.22s;
-}
-.fp-item:hover .fp-item-dot { background: var(--teal); transform: scale(1.35); }
-
-.fp-item-content { flex: 1; }
-.fp-item-label { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
-.fp-item-text { font-size: 13px; color: rgba(30,47,60,0.64); line-height: 1.74; }
+.fp-item-label { font-size: 18px; font-weight: 700; color: var(--dark); }
+.fp-item-text { font-size: 17.5px; color: rgba(30,47,60,0.67); line-height: 1.7; }
 .fp-item-text strong { color: var(--dark); font-weight: 700; }
 
-/* ═══ PEER REVIEW TIMELINE ═══ */
+@media (max-width: 700px) {
+  .fp-item { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ═══ PEER REVIEW — numbered grid list, no circles ═══ */
 .fp-timeline {
-  padding: 20px 28px 24px; display: flex; flex-direction: column; gap: 0;
+  padding: 18px 28px 22px; display: flex; flex-direction: column; gap: 0;
 }
 .fp-step {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 14px 0; position: relative;
+  display: grid; grid-template-columns: 32px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(26,101,119,0.05);
 }
-.fp-step:not(:last-child)::after {
-  content: ''; position: absolute; left: 16px; top: 48px;
-  width: 1px; height: calc(100% - 20px);
-  background: rgba(26,101,119,0.12);
-}
-.fp-step-circle {
-  width: 33px; height: 33px; border-radius: 50%;
-  background: rgba(26,101,119,0.08);
-  border: 1.5px solid rgba(26,101,119,0.16);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 800; color: var(--teal); flex-shrink: 0;
-  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
-  position: relative; z-index: 1;
-}
-.fp-step:hover .fp-step-circle {
-  background: var(--teal); color: #fff; border-color: var(--teal);
-  transform: scale(1.1);
-}
-.fp-step-body { padding-top: 5px; }
-.fp-step-title { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
-.fp-step-desc { font-size: 12.5px; color: rgba(30,47,60,0.6); line-height: 1.65; }
+.fp-step:last-child { border-bottom: none; }
+.fp-step-circle { font-size: 18px; font-weight: 800; color: var(--teal); }
+.fp-step-title { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+.fp-step-desc { font-size: 17.5px; color: rgba(30,47,60,0.65); line-height: 1.65; }
 
-/* ═══ POLICY BADGES (Open Access + Privacy) ═══ */
+/* ═══ POLICY NOTES (Open Access + Privacy) ═══ */
 .fp-badges {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px;
   padding: 18px 28px 22px;
 }
 .fp-badge {
-  background: var(--body-bg);
-  border: 1px solid rgba(26,101,119,0.1);
-  border-radius: 12px; padding: 18px 18px;
-  display: flex; align-items: flex-start; gap: 12px;
-  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
-  cursor: default;
+  border-left: 2px solid rgba(26,101,119,0.18);
+  padding-left: 14px;
 }
-.fp-badge:hover {
-  border-color: rgba(26,101,119,0.22); background: #eaf4f7;
-  transform: translateY(-2px); box-shadow: 0 5px 18px rgba(26,101,119,0.08);
-}
-.fp-badge-icon {
-  width: 36px; height: 36px; border-radius: 9px;
-  background: rgba(26,101,119,0.1); border: 1px solid rgba(26,101,119,0.15);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  transition: background 0.25s;
-}
-.fp-badge:hover .fp-badge-icon { background: var(--teal); }
-.fp-badge-icon svg { width: 16px; height: 16px; stroke: var(--teal); transition: stroke 0.25s; }
-.fp-badge:hover .fp-badge-icon svg { stroke: #fff; }
-.fp-badge-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
-.fp-badge-text { font-size: 12.5px; color: rgba(30,47,60,0.65); line-height: 1.65; }
+.fp-badge-label { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+.fp-badge-text { font-size: 17.5px; color: rgba(30,47,60,0.67); line-height: 1.65; }
 
 /* ═══ REQUIRED SECTIONS LIST ═══ */
 .fp-req-grid {
@@ -514,77 +423,44 @@ body {
   padding: 16px 28px 22px;
 }
 .fp-req-tag {
-  display: flex; align-items: center; gap: 8px;
   background: var(--body-bg); border: 1px solid rgba(26,101,119,0.09);
-  border-radius: 8px; padding: 10px 14px;
-  font-size: 12.5px; font-weight: 600; color: var(--dark);
-  transition: all 0.22s cubic-bezier(0.22,1,0.36,1); cursor: default;
+  padding: 10px 14px;
+  font-size: 17.5px; font-weight: 600; color: var(--dark);
 }
-.fp-req-tag:hover {
-  border-color: var(--teal); background: #edf6f8;
-  color: var(--teal); transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26,101,119,0.09);
-}
-.fp-req-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--teal); opacity: 0.5; flex-shrink: 0;
-  transition: opacity 0.22s;
-}
-.fp-req-tag:hover .fp-req-dot { opacity: 1; }
 
 /* ═══ CONTACT BANNER ═══ */
 .fp-contact {
-  background: linear-gradient(135deg, #0a2530 0%, #0d3548 100%);
-  border-radius: 18px; padding: 36px 36px;
+  background: #1a4a5c;
+  padding: 32px 36px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 24px; flex-wrap: wrap;
-  position: relative; overflow: hidden;
 }
-.fp-contact::before {
-  content: ''; position: absolute; top: -60px; right: -60px;
-  width: 260px; height: 260px; border-radius: 50%;
-  border: 1px solid rgba(198,148,68,0.1); pointer-events: none;
-}
-.fp-contact::after {
-  content: ''; position: absolute; bottom: -40px; left: -40px;
-  width: 180px; height: 180px; border-radius: 50%;
-  border: 1px solid rgba(26,101,119,0.15); pointer-events: none;
-}
-.fp-contact-left { position: relative; z-index: 1; }
 .fp-contact-eye {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 8px;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 8px;
 }
-.fp-contact-title { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 6px; letter-spacing: -0.02em; }
-.fp-contact-sub { font-size: 13px; color: rgba(255,255,255,0.44); }
-.fp-contact-right { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.fp-contact-title { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; letter-spacing: -0.02em; }
+.fp-contact-sub { font-size: 18px; color: rgba(255,255,255,0.5); }
+.fp-contact-right { display: flex; flex-direction: column; gap: 10px; }
 .fp-contact-email {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(198,148,68,0.12); border: 1px solid rgba(198,148,68,0.25);
-  color: var(--gold); padding: 12px 22px; border-radius: 9px;
-  font-size: 13px; font-weight: 700; text-decoration: none;
+  display: inline-block;
+  background: rgba(198,148,68,0.14); border: 1px solid rgba(198,148,68,0.3);
+  color: var(--gold); padding: 12px 22px; border-radius: 6px;
+  font-size: 18px; font-weight: 700; text-decoration: none;
   white-space: nowrap;
-  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+  transition: background 0.2s, color 0.2s;
 }
-.fp-contact-email:hover {
-  background: var(--gold); color: #1c2b14;
-  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(198,148,68,0.35);
-}
-.fp-contact-email svg { width: 14px; height: 14px; stroke: currentColor; }
+.fp-contact-email:hover { background: var(--gold); color: #1c2b14; }
 
 .fp-link-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.65); padding: 11px 22px; border-radius: 9px;
-  font-size: 13px; font-weight: 600; text-decoration: none;
+  display: inline-block;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7); padding: 11px 22px; border-radius: 6px;
+  font-size: 18px; font-weight: 600; text-decoration: none;
   white-space: nowrap;
-  transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+  transition: background 0.2s, color 0.2s;
 }
-.fp-link-btn:hover {
-  background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25);
-  color: #fff; transform: translateY(-2px);
-}
-.fp-link-btn svg { width: 14px; height: 14px; stroke: currentColor; }
+.fp-link-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 900px) {
@@ -599,7 +475,6 @@ body {
   .fp-body { padding: 48px var(--pad) 72px; gap: 20px; }
   .fp-section-head { padding: 18px 20px; }
   .fp-item { padding: 14px 20px; }
-  .fp-item:hover { padding-left: 26px; }
   .fp-req-grid { grid-template-columns: 1fr 1fr; padding: 14px 20px; }
   .fp-badges { padding: 14px 20px; }
   .fp-timeline { padding: 16px 20px 20px; }
@@ -618,12 +493,12 @@ body {
 
   <!-- QUICK NAV -->
   <div class="fp-nav" id="fpNav">
-    <a href="#fp-s1" class="fp-nav-pill"><span>01</span> Format &amp; File</a>
-    <a href="#fp-s2" class="fp-nav-pill"><span>02</span> Originality</a>
-    <a href="#fp-s3" class="fp-nav-pill"><span>03</span> Author Ethics</a>
-    <a href="#fp-s4" class="fp-nav-pill"><span>04</span> Quality &amp; Structure</a>
-    <a href="#fp-s5" class="fp-nav-pill"><span>05</span> Peer Review</a>
-    <a href="#fp-s6" class="fp-nav-pill"><span>06</span> Key Policies</a>
+    <a href="#fp-s1" class="fp-nav-link"><span>01</span>Format &amp; File</a>
+    <a href="#fp-s2" class="fp-nav-link"><span>02</span>Originality</a>
+    <a href="#fp-s3" class="fp-nav-link"><span>03</span>Author Ethics</a>
+    <a href="#fp-s4" class="fp-nav-link"><span>04</span>Quality &amp; Structure</a>
+    <a href="#fp-s5" class="fp-nav-link"><span>05</span>Peer Review</a>
+    <a href="#fp-s6" class="fp-nav-link"><span>06</span>Key Policies</a>
   </div>
 
   <div class="fp-body">
@@ -633,36 +508,27 @@ body {
       <div class="fp-section-head">
         <div class="fp-section-num">01</div>
         <div class="fp-section-title">Format &amp; File Requirements</div>
-        <div class="fp-section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
       </div>
       <div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Accepted File Formats</div>
-            <div class="fp-item-text">Submission file must be in <strong>Microsoft Word (.docx)</strong> or <strong>TeX</strong> format. If submitting in TeX format, high-resolution, properly named figures must be attached alongside the TeX file.</div>
-          </div>
+          <div class="fp-item-label">Accepted File Formats</div>
+          <div class="fp-item-text">Submission file must be in <strong>Microsoft Word (.docx)</strong> or <strong>TeX</strong> format. If submitting in TeX format, high-resolution, properly named figures must be attached alongside the TeX file.</div>
         </div>
         <div class="fp-item" style="border-bottom:none;">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Required Manuscript Sections</div>
-            <div class="fp-item-text">Your manuscript must include all of the following sections:</div>
-          </div>
+          <div class="fp-item-label">Required Manuscript Sections</div>
+          <div class="fp-item-text">Your manuscript must include all of the following sections:</div>
         </div>
         <div class="fp-req-grid">
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Title Page</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Abstract &amp; Keywords</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Introduction</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Materials &amp; Methods</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Results</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Discussion</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Acknowledgment</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>References</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Tables</div>
-          <div class="fp-req-tag"><span class="fp-req-dot"></span>Figure Legends</div>
+          <div class="fp-req-tag">Title Page</div>
+          <div class="fp-req-tag">Abstract &amp; Keywords</div>
+          <div class="fp-req-tag">Introduction</div>
+          <div class="fp-req-tag">Materials &amp; Methods</div>
+          <div class="fp-req-tag">Results</div>
+          <div class="fp-req-tag">Discussion</div>
+          <div class="fp-req-tag">Acknowledgment</div>
+          <div class="fp-req-tag">References</div>
+          <div class="fp-req-tag">Tables</div>
+          <div class="fp-req-tag">Figure Legends</div>
         </div>
       </div>
     </div>
@@ -672,31 +538,19 @@ body {
       <div class="fp-section-head">
         <div class="fp-section-num">02</div>
         <div class="fp-section-title">Originality &amp; Prior Publication</div>
-        <div class="fp-section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
       </div>
       <div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Not Previously Published</div>
-            <div class="fp-item-text">The work must <strong>not</strong> have been previously published in any journal, conference proceedings, or public repository.</div>
-          </div>
+          <div class="fp-item-label">Not Previously Published</div>
+          <div class="fp-item-text">The work must <strong>not</strong> have been previously published in any journal, conference proceedings, or public repository.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Not Under Concurrent Consideration</div>
-            <div class="fp-item-text">The work must <strong>not</strong> be currently under review or consideration by another journal or conference at the time of submission.</div>
-          </div>
+          <div class="fp-item-label">Not Under Concurrent Consideration</div>
+          <div class="fp-item-text">The work must <strong>not</strong> be currently under review or consideration by another journal or conference at the time of submission.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Third-Party Material</div>
-            <div class="fp-item-text">Any material from external sources — including photos, datasets, and documents — requires proper citation and prior written permission from the copyright holder.</div>
-          </div>
+          <div class="fp-item-label">Third-Party Material</div>
+          <div class="fp-item-text">Any material from external sources — including photos, datasets, and documents — requires proper citation and prior written permission from the copyright holder.</div>
         </div>
       </div>
     </div>
@@ -706,31 +560,19 @@ body {
       <div class="fp-section-head">
         <div class="fp-section-num">03</div>
         <div class="fp-section-title">Author Responsibilities &amp; Ethics</div>
-        <div class="fp-section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
       </div>
       <div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Authorship Criteria</div>
-            <div class="fp-item-text">All listed authors must have contributed significantly to the work and must explicitly consent to being identified as an author on the submission.</div>
-          </div>
+          <div class="fp-item-label">Authorship Criteria</div>
+          <div class="fp-item-text">All listed authors must have contributed significantly to the work and must explicitly consent to being identified as an author on the submission.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Corresponding Author Confirmation</div>
-            <div class="fp-item-text">The corresponding author must confirm that all listed co-authors agree with the manuscript's content before it is submitted.</div>
-          </div>
+          <div class="fp-item-label">Corresponding Author Confirmation</div>
+          <div class="fp-item-text">The corresponding author must confirm that all listed co-authors agree with the manuscript's content before it is submitted.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Plagiarism &amp; Data Integrity</div>
-            <div class="fp-item-text">A rigorous plagiarism check will be conducted on all submissions. Papers found to contain plagiarism or data distortion will be rejected outright or retracted if already published.</div>
-          </div>
+          <div class="fp-item-label">Plagiarism &amp; Data Integrity</div>
+          <div class="fp-item-text">A rigorous plagiarism check will be conducted on all submissions. Papers found to contain plagiarism or data distortion will be rejected outright or retracted if already published.</div>
         </div>
       </div>
     </div>
@@ -740,38 +582,23 @@ body {
       <div class="fp-section-head">
         <div class="fp-section-num">04</div>
         <div class="fp-section-title">Quality &amp; Structure Requirements</div>
-        <div class="fp-section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
       </div>
       <div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Study Design &amp; Argument</div>
-            <div class="fp-item-text">The study design and research argument must be clearly structured and articulated. The paper must present a coherent and logical narrative from introduction through to conclusion.</div>
-          </div>
+          <div class="fp-item-label">Study Design &amp; Argument</div>
+          <div class="fp-item-text">The study design and research argument must be clearly structured and articulated. The paper must present a coherent and logical narrative from introduction through to conclusion.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Concise Title</div>
-            <div class="fp-item-text">The manuscript title must be concise, informative, and accurately reflect the scope and contribution of the work.</div>
-          </div>
+          <div class="fp-item-label">Concise Title</div>
+          <div class="fp-item-text">The manuscript title must be concise, informative, and accurately reflect the scope and contribution of the work.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">Standalone Abstract</div>
-            <div class="fp-item-text">The abstract must be fully comprehensible without reading the full paper — it must stand on its own and clearly summarise the study's purpose, methodology, findings, and significance.</div>
-          </div>
+          <div class="fp-item-label">Standalone Abstract</div>
+          <div class="fp-item-text">The abstract must be fully comprehensible without reading the full paper — it must stand on its own and clearly summarise the study's purpose, methodology, findings, and significance.</div>
         </div>
         <div class="fp-item">
-          <div class="fp-item-dot"></div>
-          <div class="fp-item-content">
-            <div class="fp-item-label">References, Tables &amp; Figures</div>
-            <div class="fp-item-text">All references must be checked for accuracy and completeness. All tables and figures must be numbered sequentially and clearly labelled.</div>
-          </div>
+          <div class="fp-item-label">References, Tables &amp; Figures</div>
+          <div class="fp-item-text">All references must be checked for accuracy and completeness. All tables and figures must be numbered sequentially and clearly labelled.</div>
         </div>
       </div>
     </div>
@@ -781,9 +608,6 @@ body {
       <div class="fp-section-head">
         <div class="fp-section-num">05</div>
         <div class="fp-section-title">Peer Review Process</div>
-        <div class="fp-section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
       </div>
       <div class="fp-timeline">
         <div class="fp-step">
@@ -822,46 +646,29 @@ body {
       <div class="fp-section-head">
         <div class="fp-section-num">06</div>
         <div class="fp-section-title">Key Policy Notes for Authors</div>
-        <div class="fp-section-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
       </div>
       <div class="fp-badges">
         <div class="fp-badge">
-          <div class="fp-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <div>
-            <div class="fp-badge-label">Open Access</div>
-            <div class="fp-badge-text">The journal provides immediate open access — free for all readers. Authors retain full copyright over their published work.</div>
-          </div>
+          <div class="fp-badge-label">Open Access</div>
+          <div class="fp-badge-text">The journal provides immediate open access — free for all readers. Authors retain full copyright over their published work.</div>
         </div>
         <div class="fp-badge">
-          <div class="fp-badge-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <div>
-            <div class="fp-badge-label">Privacy</div>
-            <div class="fp-badge-text">Personal information (name, affiliation, address, email, phone) is collected solely for manuscript processing and editorial communication.</div>
-          </div>
+          <div class="fp-badge-label">Privacy</div>
+          <div class="fp-badge-text">Personal information (name, affiliation, address, email, phone) is collected solely for manuscript processing and editorial communication.</div>
         </div>
       </div>
     </div>
 
     <!-- ── CONTACT & SUBMIT BANNER ── -->
     <div class="fp-contact fp-obs">
-      <div class="fp-contact-left">
+      <div>
         <div class="fp-contact-eye">Get in Touch</div>
         <div class="fp-contact-title">Questions or Inquiries?</div>
         <div class="fp-contact-sub">Contact the editorial team for the 5th ICSciEnTec 2027 at the address below.</div>
       </div>
       <div class="fp-contact-right">
-        <a href="mailto:secretary_icscientec.cst@rub.edu.bt" class="fp-contact-email">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          secretary_icscientec.cst@rub.edu.bt
-        </a>
+        <a href="mailto:secretary_icscientec.cst@rub.edu.bt" class="fp-contact-email">secretary_icscientec.cst@rub.edu.bt</a>
         <a href="https://review.cst.edu.bt/auth/login.php" class="fp-link-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           Submit Full Paper
         </a>
       </div>
@@ -883,7 +690,7 @@ body {
 
   document.querySelectorAll('.fp-obs, #fpNav').forEach(el => obs.observe(el));
 
-  document.querySelectorAll('.fp-nav-pill').forEach(pill => {
+  document.querySelectorAll('.fp-nav-link').forEach(pill => {
     pill.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(pill.getAttribute('href'));

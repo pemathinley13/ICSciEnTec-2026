@@ -258,151 +258,514 @@ body {
   <a href="1st-icscientec-2021.html" class="sub">1st ICSciEnTec 2021</a>
 </div>
 
-<h2 class="sr-only">Supporting Partners — ICSciEnTec 2027</h2>
-<style>
-.sp2-header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:24px;flex-wrap:wrap }
-.sp2-title{font-size:18px;font-weight:500;color:"", font-family: "tahoma"}
-.sp2-sub{font-size:13px;color:var(--color-text-tertiary);margin-top:2px}
-.sp2-cta{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:#0F6E56;text-decoration:none;font-weight:500;white-space:nowrap}
-.sp2-cta svg{width:14px;height:14px;stroke:#0F6E56;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.sp2-cta:hover{opacity:.75}
-.sp2-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-.sp2-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:20px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:border-color .18s,transform .18s;cursor:default;position:relative;overflow:hidden}
-.sp2-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#0F6E56;opacity:0;transition:opacity .18s}
-.sp2-card:hover{border-color:var(--color-border-secondary);transform:translateY(-3px)}
-.sp2-card:hover::before{opacity:1}
-.sp2-logo-wrap{width:80px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.sp2-logo-wrap img{max-width:80px;max-height:56px;object-fit:contain;filter:grayscale(20%) opacity(.82);transition:filter .22s}
-.sp2-card:hover .sp2-logo-wrap img{filter:grayscale(0%) opacity(1)}
-.sp2-divider{width:32px;height:1px;background:var(--color-border-tertiary);flex-shrink:0}
-.sp2-info{text-align:center}
-.sp2-name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;line-height:1.3}
-.sp2-desc{font-size:11.5px;color:var(--color-text-secondary);line-height:1.55}
-.sp2-tag{display:inline-block;margin-top:8px;font-size:10.5px;font-weight:500;padding:2px 9px;border-radius:20px;background:#E1F5EE;color:#085041;letter-spacing:.03em}
-</style>
+<div id="ics-sponsors">
 
-<div style="padding:4px 0 0">
-  <div class="sp2-header">
-    <div>
-      <div class="sp2-title">Supporting partners</div>
+  <style>
+    #ics-sponsors {
+      --teal: #1a6577;
+      --teal-d: #0f4655;
+      --gold: #C69444;
+      --gold-l: #e2be4a;
+      --ink: #1e2f3c;
+      --muted: #7a9aaa;
+      --line: rgba(26,101,119,0.12);
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: #fff;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #ics-sponsors * { box-sizing: border-box; }
+
+    #ics-sponsors .ics-container {
+      width: min(1160px, 92%);
+      margin: 0 auto;
+    }
+
+    #ics-sponsors .ics-hero {
+      background: #1a4a5c;
+      color: #fff;
+      padding: 92px 20px 85px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #ics-sponsors .ics-eyebrow {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    #ics-sponsors .ics-hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 20px;
+      max-width: 780px;
+    }
+    #ics-sponsors .ics-hero h1 .gold { color: var(--gold); }
+
+    #ics-sponsors .ics-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+
+    #ics-sponsors .ics-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      padding: 13px 30px;
+      border-radius: 30px;
+      background: var(--gold);
+      color: #1c2b14;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
+      box-shadow: 0 4px 16px rgba(198,148,68,0.25);
+    }
+
+    #ics-sponsors .ics-button:hover {
+      background: var(--gold-l);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(198,148,68,0.4);
+    }
+
+    #ics-sponsors .ics-intro {
+      text-align: center;
+      padding: 72px 0 20px;
+    }
+
+    #ics-sponsors .ics-kicker {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    #ics-sponsors h2 {
+      color: var(--teal-d);
+      font-size: clamp(26px, 3.2vw, 36px);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      font-weight: 800;
+      margin: 0 0 15px;
+    }
+
+    #ics-sponsors .ics-description {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    #ics-sponsors .ics-section {
+      padding: 40px 0 56px;
+    }
+
+    #ics-sponsors .ics-tier-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    #ics-sponsors .ics-tier-heading h3 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-d);
+      margin: 0 0 9px;
+    }
+
+    #ics-sponsors .ics-tier-heading p {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0;
+    }
+
+    #ics-sponsors .ics-sponsor-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 110px;
+      padding: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+
+    #ics-sponsors .ics-sponsor-card:hover .ics-sponsor-logo {
+      border-color: rgba(26,101,119,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(26,101,119,0.1);
+    }
+
+    #ics-sponsors .ics-sponsor-logo img {
+      display: block;
+      max-width: 100%;
+      max-height: 72px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(15%) opacity(.88);
+      transition: filter .22s;
+    }
+
+    #ics-sponsors .ics-sponsor-card:hover .ics-sponsor-logo img {
+      filter: grayscale(0%) opacity(1);
+    }
+
+    #ics-sponsors .ics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    #ics-sponsors .ics-sponsor-card { text-align: center; }
+
+    #ics-sponsors .ics-sponsor-name {
+      display: block;
+      color: var(--teal-d);
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    #ics-sponsors .ics-sponsor-desc {
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.6;
+    }
+
+    #ics-sponsors .ics-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      padding: 3px 11px;
+      border-radius: 20px;
+      background: rgba(26,101,119,0.08);
+      border: 1px solid rgba(26,101,119,0.18);
+      color: var(--teal);
+      letter-spacing: 0.04em;
+    }
+    #ics-sponsors .ics-tag-title {
+      background: rgba(198,148,68,0.12);
+      border-color: rgba(198,148,68,0.3);
+      color: #a87a2e;
+    }
+
+    /* ── Tier-specific grid layouts: descending hierarchy ── */
+    #ics-sponsors .ics-grid-title     { grid-template-columns: 1fr; justify-items: center; }
+    #ics-sponsors .ics-grid-platinum  { grid-template-columns: 1fr; justify-items: center; }
+    #ics-sponsors .ics-grid-gold      { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; margin: 0 auto; }
+    #ics-sponsors .ics-grid-silver    { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #ics-sponsors .ics-grid-exhibitor { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 760px; margin: 0 auto; }
+
+    /* ── Card sizes: large (Title) down to extra-small (Exhibitor) ── */
+    #ics-sponsors .ics-card-lg { padding: 40px 32px; max-width: 460px; width: 100%; border: 1.5px solid rgba(198,148,68,0.35); box-shadow: 0 16px 44px rgba(198,148,68,0.12); }
+    #ics-sponsors .ics-card-md { padding: 30px 28px; max-width: 360px; width: 100%; }
+    #ics-sponsors .ics-card-sm { padding: 20px 16px; }
+    #ics-sponsors .ics-card-xs { padding: 16px 14px; }
+
+    #ics-sponsors .ics-logo-lg { min-height: 160px; }
+    #ics-sponsors .ics-logo-md { min-height: 120px; }
+    #ics-sponsors .ics-logo-sm { min-height: 90px; }
+
+    #ics-sponsors .ics-card-lg .ics-sponsor-name { font-size: 18px; }
+    #ics-sponsors .ics-card-md .ics-sponsor-name { font-size: 15px; }
+
+    /* ── Logo rotator (Title tier): cross-fades between slides every 5s ── */
+    #ics-sponsors .ics-rotator { position: relative; }
+    #ics-sponsors .ics-rotate-slide {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 1s ease;
+    }
+    #ics-sponsors .ics-rotate-slide.is-active { opacity: 1; position: relative; }
+    #ics-sponsors .ics-rotate-slide img {
+      max-width: 100%; max-height: 72px; width: auto; height: auto; object-fit: contain;
+    }
+
+    /* ── Placeholder logo tile (confirmed sponsor, artwork pending) ── */
+    #ics-sponsors .ics-logo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(26,101,119,0.06);
+      border-radius: 8px;
+      color: var(--teal);
+      font-weight: 800; font-size: 20px; letter-spacing: 0.05em;
+    }
+    #ics-sponsors .ics-card-lg .ics-logo-placeholder { font-size: 26px; }
+
+    /* ── Placeholder card (tier slot still open) ── */
+    #ics-sponsors .ics-placeholder-card {
+      border: 1.5px dashed var(--line);
+      border-radius: 10px;
+      background: #f7fafb;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      min-height: 110px;
+    }
+    #ics-sponsors .ics-grid-gold .ics-placeholder-card { min-height: 130px; }
+    #ics-sponsors .ics-placeholder-label {
+      color: var(--muted); font-size: 16.5px; font-weight: 600; letter-spacing: 0.02em;
+    }
+
+    #ics-sponsors .ics-become {
+      background: #f3f8fa;
+      padding: 72px 20px;
+      margin-top: 20px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    #ics-sponsors .ics-become p {
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 26px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    #ics-sponsors .ics-become-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    #ics-sponsors .ics-button-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      box-shadow: none;
+    }
+
+    #ics-sponsors .ics-button-outline:hover {
+      background: var(--gold);
+      color: var(--teal-d);
+      box-shadow: 0 8px 24px rgba(198,148,68,0.3);
+    }
+
+    @media (max-width: 767px) {
+      #ics-sponsors .ics-hero { padding: 64px 20px; }
+      #ics-sponsors .ics-intro { padding-top: 52px; }
+      #ics-sponsors .ics-section { padding: 28px 0 40px; }
+      #ics-sponsors .ics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      #ics-sponsors .ics-grid-gold,
+      #ics-sponsors .ics-grid-silver,
+      #ics-sponsors .ics-grid-exhibitor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #ics-sponsors .ics-sponsor-logo { min-height: 96px; padding: 12px; }
+      #ics-sponsors .ics-card-lg { padding: 28px 20px; }
+    }
+
+    @media (max-width: 420px) {
+      #ics-sponsors .ics-grid-gold,
+      #ics-sponsors .ics-grid-silver,
+      #ics-sponsors .ics-grid-exhibitor { grid-template-columns: 1fr; }
+      #ics-sponsors .ics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- HERO -->
+  <section class="ics-hero">
+    <div class="ics-container">
+      <h1>Our Sponsors &amp; <span class="gold">Partners</span></h1>
+      <p>
+        Bringing together research, innovation and industry to create
+        meaningful impact through collaboration. We gratefully acknowledge
+        the organisations supporting ICSciEnTec.
+      </p>
+      <a class="ics-button" href="#ics-sponsor-tiers">Explore Our Sponsors &darr;</a>
     </div>
+  </section>
+
+  <!-- INTRODUCTION -->
+  <section class="ics-intro">
+    <div class="ics-container">
+      <div class="ics-kicker">Stronger Together</div>
+      <h2>Recognising Our Valued Sponsors</h2>
+      <p class="ics-description">
+        Our sponsors help create opportunities for researchers, academics,
+        students and industry professionals to exchange ideas, share
+        discoveries and advance technology.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPONSORS — hierarchical by tier: Title > Platinum > Gold > Silver > Exhibitor -->
+  <div class="ics-container" id="ics-sponsor-tiers">
+
+    <!-- TITLE SPONSOR -->
+    <section class="ics-section">
+      <div class="ics-tier-heading">
+        <h3>Title Sponsor</h3>
+        <p>Our highest level of sponsorship recognition</p>
+      </div>
+      <div class="ics-grid ics-grid-title">
+        <div class="ics-sponsor-card ics-card-lg">
+          <div class="ics-sponsor-logo ics-logo-lg ics-rotator" id="ics-title-rotator">
+            <img class="ics-rotate-slide is-active" src="../images/undp-7.jpg" alt="ECRUL partner logo">
+            <img class="ics-rotate-slide" src="../images/moit.png" alt="ECRUL partner logo">
+            <div class="ics-rotate-slide ics-logo-placeholder">ECRUL</div>
+          </div>
+          <span class="ics-sponsor-name">ECRUL</span>
+          <span class="ics-tag ics-tag-title">Title Sponsor</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATINUM SPONSOR -->
+    <section class="ics-section">
+      <div class="ics-tier-heading">
+        <h3>Platinum Sponsor</h3>
+        <p>Supporting ICSciEnTec at the highest tier of partnership</p>
+      </div>
+      <div class="ics-grid ics-grid-platinum">
+        <div class="ics-sponsor-card ics-card-md">
+          <div class="ics-sponsor-logo ics-logo-md"><img src="../images/dgpc-logo.png" alt="DGPC logo"></div>
+          <span class="ics-sponsor-name">DGPC</span>
+          <span class="ics-tag">Platinum Sponsor</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOLD SPONSORS -->
+    <section class="ics-section">
+      <div class="ics-tier-heading">
+        <h3>Gold Sponsors</h3>
+        <p>Gold sponsorship slots open for ICSciEnTec 2027</p>
+      </div>
+      <div class="ics-grid ics-grid-gold">
+        <div class="ics-placeholder-card ics-card-sm">
+          <span class="ics-placeholder-label">Gold Sponsor — Coming Soon</span>
+        </div>
+        <div class="ics-placeholder-card ics-card-sm">
+          <span class="ics-placeholder-label">Gold Sponsor — Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SILVER SPONSORS -->
+    <section class="ics-section">
+      <div class="ics-tier-heading">
+        <h3>Silver Sponsors</h3>
+        <p>Thank you for supporting our conference</p>
+      </div>
+      <div class="ics-grid ics-grid-silver">
+
+        <div class="ics-sponsor-card ics-card-sm">
+          <div class="ics-sponsor-logo ics-logo-sm"><img src="../images/WhatsApp-Image-2026-03-30-at-4.43.01-PM.jpeg" alt="Perfect logo"></div>
+          <span class="ics-sponsor-name">Perfect</span>
+          <span class="ics-tag">Silver Sponsor</span>
+        </div>
+
+        <div class="ics-sponsor-card ics-card-sm">
+          <div class="ics-sponsor-logo ics-logo-sm"><div class="ics-logo-placeholder">BA</div></div>
+          <span class="ics-sponsor-name">Bhutan Automation</span>
+          <span class="ics-tag">Silver Sponsor</span>
+        </div>
+
+        <div class="ics-sponsor-card ics-card-sm">
+          <div class="ics-sponsor-logo ics-logo-sm"><div class="ics-logo-placeholder">BBP</div></div>
+          <span class="ics-sponsor-name">Bhutan Board Products Pvt. Ltd.</span>
+          <span class="ics-tag">Silver Sponsor</span>
+        </div>
+
+        <div class="ics-sponsor-card ics-card-sm">
+          <div class="ics-sponsor-logo ics-logo-sm"><div class="ics-logo-placeholder">DWA</div></div>
+          <span class="ics-sponsor-name">Druk Wang Alloys Ltd.</span>
+          <span class="ics-tag">Silver Sponsor</span>
+        </div>
+
+        <div class="ics-placeholder-card ics-card-sm">
+          <span class="ics-placeholder-label">Coming Soon</span>
+        </div>
+
+        <div class="ics-placeholder-card ics-card-sm">
+          <span class="ics-placeholder-label">Coming Soon</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXHIBITORS -->
+    <section class="ics-section">
+      <div class="ics-tier-heading">
+        <h3>Exhibitors</h3>
+        <p>Exhibitor slots open for ICSciEnTec 2027</p>
+      </div>
+      <div class="ics-grid ics-grid-exhibitor">
+        <div class="ics-placeholder-card ics-card-xs">
+          <span class="ics-placeholder-label">Coming Soon</span>
+        </div>
+        <div class="ics-placeholder-card ics-card-xs">
+          <span class="ics-placeholder-label">Coming Soon</span>
+        </div>
+        <div class="ics-placeholder-card ics-card-xs">
+          <span class="ics-placeholder-label">Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
   </div>
 
-  <div class="sp2-grid">
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/undp-7.jpg" alt="UNDP"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">UNDP Bhutan</div>
-        <div class="sp2-desc">United Nations Development Programme — advancing sustainable development and innovation in Bhutan.</div>
-        <span class="sp2-tag">International</span>
+  <!-- BECOME A SPONSOR -->
+  <section class="ics-become">
+    <div class="ics-container">
+      <div class="ics-kicker">Partner With Us</div>
+      <h2>Become a Conference Sponsor</h2>
+      <p>
+        Connect your organisation with researchers, academics, innovators
+        and emerging talent. Get in touch with our organising team to
+        explore sponsorship opportunities.
+      </p>
+      <div class="ics-become-links">
+        <a class="ics-button" href="mailto:secretary_icscientec.cst@rub.edu.bt?subject=ICSciEnTec%20Sponsorship%20Enquiry">
+          Enquire About Sponsorship &rarr;
+        </a>
+        <a class="ics-button ics-button-outline" href="sponsorship-package.html">
+          View Sponsorship Packages
+        </a>
       </div>
     </div>
+  </section>
 
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/bnblogo.png" alt="BNB"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">Bank of Bhutan</div>
-        <div class="sp2-desc">Bhutan's oldest financial institution, supporting national development and innovation.</div>
-        <span class="sp2-tag">Finance</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/moit.png" alt="MOIT"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">MoIT</div>
-        <div class="sp2-desc">Ministry of Industry, Trade and Commerce — driving industrial growth and technology policy.</div>
-        <span class="sp2-tag">Government</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="https://icscientec.cst.edu.bt/wp-test/wp-content/uploads/2026/04/gef.png" alt="GEF"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">GEF</div>
-        <div class="sp2-desc">Global Environment Facility — funding environmental and climate science initiatives worldwide.</div>
-        <span class="sp2-tag">Environment</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/dgpc-logo.png" alt="DGPC"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">DGPC</div>
-        <div class="sp2-desc">Druk Green Power Corporation — Bhutan's premier hydropower generation company.</div>
-        <span class="sp2-tag">Energy</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/bpclogom.png" alt="BPC"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">BPC</div>
-        <div class="sp2-desc">Bhutan Power Corporation — managing national power transmission and distribution.</div>
-        <span class="sp2-tag">Energy</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="https://icscientec.cst.edu.bt/wp-test/wp-content/uploads/2026/03/photo-2025-04-14-15-56-23.jpg" alt="JB Solar"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">JB Solar</div>
-        <div class="sp2-desc">Leading solar energy solutions provider advancing renewable energy adoption in Bhutan.</div>
-        <span class="sp2-tag">Renewable</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/WhatsApp-Image-2026-03-30-at-4.43.01-PM.jpeg" alt="Perfect"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">Perfect</div>
-        <div class="sp2-desc">Technology and solutions company contributing to enterprise and digital advancement in Bhutan.</div>
-        <span class="sp2-tag">Technology</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/ddgv_gmc.png" alt="DDVC GMC"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">DDVC GMC</div>
-        <div class="sp2-desc">Dungsam Dolomite & Volcanic Company — minerals and materials sector contributor.</div>
-        <span class="sp2-tag">Industry</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/GALLYE.svg" alt="Ghalley Enterprise"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">Ghalley Enterprise</div>
-        <div class="sp2-desc">Diversified Bhutanese enterprise supporting infrastructure, trade, and industrial growth.</div>
-        <span class="sp2-tag">Enterprise</span>
-      </div>
-    </div>
-
-    <div class="sp2-card">
-      <div class="sp2-logo-wrap"><img src="../images/RICB-Logo.jpeg" alt="RICB"></div>
-      <div class="sp2-divider"></div>
-      <div class="sp2-info">
-        <div class="sp2-name">RICB</div>
-        <div class="sp2-desc">Royal Insurance Corporation of Bhutan — providing insurance and risk management services nationwide.</div>
-        <span class="sp2-tag">Finance</span>
-      </div>
-    </div>
-
-  </div>
 </div>
 
+<script>
+(function () {
+  var rotator = document.getElementById("ics-title-rotator");
+  if (!rotator) return;
+  var slides = rotator.querySelectorAll(".ics-rotate-slide");
+  if (slides.length < 2) return;
+  var current = 0;
+  setInterval(function () {
+    slides[current].classList.remove("is-active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("is-active");
+  }, 5000);
+})();
+</script>
 
 <footer class="footer">
   <div class="footer-top">

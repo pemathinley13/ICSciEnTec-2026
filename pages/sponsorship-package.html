@@ -258,26 +258,420 @@ body {
   <a href="1st-icscientec-2021.html" class="sub">1st ICSciEnTec 2021</a>
 </div>
 
-<style>
-.ph-wrap{ width:100vw; position:relative; left:50%; margin-left:-50vw; overflow-x:hidden;
-  background: linear-gradient(135deg, #0a2530 0%, #0d3548 55%, #0a2530 100%);
-  min-height: 56vh; display:flex; align-items:center; justify-content:center; text-align:center; padding: 90px 24px; }
-.ph-inner{ max-width:560px; }
-.ph-eyebrow{ font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#C69444;
-  background: rgba(198,148,68,0.1); border:1px solid rgba(198,148,68,0.25); border-radius:20px; padding:7px 18px; display:inline-block; margin-bottom:26px; }
-.ph-title{ font-size: clamp(28px,4.5vw,44px); font-weight:800; color:#fff; letter-spacing:-0.02em; margin-bottom:16px; line-height:1.15; }
-.ph-sub{ font-size:15px; color:rgba(255,255,255,0.55); line-height:1.75; margin-bottom:30px; }
-.ph-btn{ display:inline-flex; align-items:center; gap:8px; background:#C69444; color:#1c2b14; font-weight:700; font-size:13.5px;
-  padding:13px 26px; border-radius:9px; text-decoration:none; transition:.25s; }
-.ph-btn:hover{ background:#d4a84e; transform:translateY(-2px); }
-</style>
-<div class="ph-wrap">
-  <div class="ph-inner">
-    <span class="ph-eyebrow">Sponsorship · Coming Soon</span>
-    <div class="ph-title">Sponsorship Package</div>
-    <p class="ph-sub">This page is being finalised and full details will be published here soon. In the meantime, please check back shortly or reach out to the organising committee for the latest information.</p>
-    <a class="ph-btn" href="welcome.html">Back to Home &rarr;</a>
+<div id="ics-package">
+
+  <style>
+    #ics-package {
+      --teal: #1a6577;
+      --teal-d: #0f4655;
+      --gold: #C69444;
+      --gold-l: #e2be4a;
+      --ink: #1e2f3c;
+      --muted: #7a9aaa;
+      --line: rgba(26,101,119,0.12);
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: #fff;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #ics-package * { box-sizing: border-box; }
+
+    #ics-package .ics-container {
+      width: min(1160px, 92%);
+      margin: 0 auto;
+    }
+
+    /* ── Hero ── */
+    #ics-package .ics-hero {
+      background: #1a4a5c;
+      color: #fff;
+      padding: 92px 20px 80px;
+      text-align: center;
+    }
+
+    #ics-package .ics-eyebrow {
+      display: inline-block;
+      font-size: 15px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      background: rgba(198,148,68,0.1); border: 1px solid rgba(198,148,68,0.25);
+      border-radius: 20px; padding: 7px 18px; margin-bottom: 24px;
+    }
+
+    #ics-package .ics-hero h1 {
+      font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -0.02em;
+      font-weight: 800; color: #fff; margin: 0 auto 18px; max-width: 760px;
+    }
+    #ics-package .ics-hero h1 .gold { color: var(--gold); }
+
+    #ics-package .ics-hero p {
+      color: rgba(255,255,255,0.65); font-size: 15.5px; line-height: 1.8;
+      max-width: 640px; margin: 0 auto;
+    }
+
+    /* ── Section label ── */
+    #ics-package .ics-section-label {
+      text-align: center; padding: 64px 0 36px;
+    }
+    #ics-package .ics-kicker {
+      color: var(--teal); text-transform: uppercase; letter-spacing: 0.2em;
+      font-weight: 700; font-size: 15px; margin-bottom: 12px;
+    }
+    #ics-package h2 {
+      color: var(--teal-d); font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.02em;
+      line-height: 1.2; font-weight: 800; margin: 0;
+    }
+
+    /* ── Comparison table ── */
+    #ics-package .ics-table-scroll {
+      overflow-x: auto; padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+    #ics-package table {
+      width: 100%; min-width: 760px; border-collapse: collapse;
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 10px 36px rgba(26,101,119,0.08);
+    }
+    #ics-package thead th {
+      background: var(--teal-d); color: #fff;
+      padding: 20px 16px; text-align: center; font-weight: 700;
+      font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase;
+      border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    #ics-package thead th:first-child { text-align: left; border-left: none; }
+    #ics-package thead th.ics-col-title { background: var(--gold); color: #1c2b14; }
+    #ics-package .ics-tier-price {
+      display: block; margin-top: 6px; font-size: 17px; font-weight: 800;
+      letter-spacing: 0; text-transform: none;
+    }
+    #ics-package tbody td {
+      padding: 16px; text-align: center; font-size: 17.5px;
+      border-bottom: 1px solid var(--line); border-left: 1px solid var(--line);
+      color: var(--ink);
+    }
+    #ics-package tbody td:first-child {
+      text-align: left; font-weight: 600; color: var(--teal-d);
+      border-left: none; white-space: nowrap;
+    }
+    #ics-package tbody tr:nth-child(even) { background: #f7fafb; }
+    #ics-package tbody tr:last-child td { border-bottom: none; }
+    #ics-package td.ics-col-title { background: rgba(198,148,68,0.06); }
+
+    #ics-package .ics-check { color: var(--teal); font-weight: 800; font-size: 15px; }
+    #ics-package .ics-dash  { color: rgba(122,154,170,0.5); font-weight: 400; }
+    #ics-package .ics-note  { display: block; font-size: 15px; color: var(--muted); margin-top: 3px; font-weight: 400; }
+
+    /* ── CTA ── */
+    #ics-package .ics-cta {
+      background: #f3f8fa; padding: 64px 20px 72px;
+      text-align: center; margin-top: 56px; border-top: 1px solid var(--line);
+    }
+    #ics-package .ics-cta p {
+      color: var(--muted); max-width: 580px; margin: 0 auto 26px; line-height: 1.8; font-size: 15px;
+    }
+    #ics-package .ics-cta-links {
+      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    #ics-package .ics-button {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      padding: 13px 30px; border-radius: 30px; background: var(--gold); color: #1c2b14;
+      font-size: 17px; font-weight: 700; letter-spacing: 0.06em;
+      transition: background .25s ease, transform .2s ease, box-shadow .25s ease;
+      box-shadow: 0 4px 16px rgba(198,148,68,0.25);
+    }
+    #ics-package .ics-button:hover {
+      background: var(--gold-l); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(198,148,68,0.4);
+    }
+    #ics-package .ics-button-outline {
+      background: transparent; border: 1.5px solid var(--gold); color: var(--gold); box-shadow: none;
+    }
+    #ics-package .ics-button-outline:hover {
+      background: var(--gold); color: var(--teal-d); box-shadow: 0 8px 24px rgba(198,148,68,0.3);
+    }
+
+    /* ── International Sponsorship ── */
+    #ics-package .ics-intl { padding-top: 24px; }
+    #ics-package .ics-intl-sub {
+      color: var(--muted); font-size: 15px; margin-top: 10px;
+    }
+
+    #ics-package .ics-intl-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+      margin-top: 12px;
+    }
+
+    #ics-package .ics-intl-card {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      padding: 32px 26px; text-align: center;
+      box-shadow: 0 8px 28px rgba(26,101,119,0.06);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    #ics-package .ics-intl-featured {
+      border: 1.5px solid rgba(198,148,68,0.4);
+      box-shadow: 0 16px 44px rgba(198,148,68,0.14);
+      transform: translateY(-6px);
+    }
+
+    #ics-package .ics-intl-tier {
+      font-size: 17px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--teal-d); margin-bottom: 8px;
+    }
+    #ics-package .ics-intl-featured .ics-intl-tier { color: #a87a2e; }
+
+    #ics-package .ics-intl-price {
+      font-size: 30px; font-weight: 800; color: var(--ink); margin-bottom: 20px;
+    }
+    #ics-package .ics-intl-price small {
+      font-size: 14px; font-weight: 600; color: var(--muted); margin-left: 4px;
+    }
+
+    #ics-package .ics-intl-benefits {
+      list-style: none; text-align: left; width: 100%;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    #ics-package .ics-intl-benefits li {
+      font-size: 17px; line-height: 1.5; color: var(--ink);
+      padding-left: 22px; position: relative;
+    }
+    #ics-package .ics-intl-benefits li::before {
+      content: '\2713'; position: absolute; left: 0; top: 0;
+      color: var(--teal); font-weight: 800;
+    }
+    #ics-package .ics-intl-featured .ics-intl-benefits li::before { color: var(--gold); }
+
+    #ics-package .ics-intl-notes {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;
+      margin-top: 48px;
+    }
+    #ics-package .ics-intl-note-card {
+      background: #f3f8fa; border-radius: 14px; padding: 26px 28px;
+    }
+    #ics-package .ics-intl-note-card h3 {
+      font-size: 17px; font-weight: 700; color: var(--teal-d); margin-bottom: 10px;
+    }
+    #ics-package .ics-intl-note-card p {
+      font-size: 15px; line-height: 1.75; color: var(--muted); margin: 0;
+    }
+
+    #ics-package .ics-intl-contact {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      flex-wrap: wrap; margin-top: 40px; padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+    #ics-package .ics-intl-contact-item {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 600; color: var(--teal-d);
+      text-decoration: none;
+    }
+    #ics-package .ics-intl-contact-item svg {
+      width: 16px; height: 16px; stroke: var(--gold); flex-shrink: 0;
+    }
+    #ics-package a.ics-intl-contact-item:hover { color: var(--teal); }
+
+    @media (max-width: 767px) {
+      #ics-package .ics-hero { padding: 64px 20px; }
+      #ics-package .ics-section-label { padding: 48px 0 24px; }
+      #ics-package .ics-intl-grid { grid-template-columns: 1fr; }
+      #ics-package .ics-intl-featured { transform: none; }
+      #ics-package .ics-intl-notes { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- HERO -->
+  <section class="ics-hero">
+    <div class="ics-container">
+      <h1>Sponsorship <span class="gold">Opportunities</span></h1>
+      <p>
+        Join us as a sponsor for ICSciEnTec 2027 and position your company at the forefront
+        of science and technology. Gain exclusive access to industry leaders, researchers,
+        and innovators while showcasing your commitment to cutting-edge advancements.
+        Be part of a transformative event shaping the future — secure your sponsorship today.
+      </p>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <div class="ics-container">
+    <div class="ics-section-label">
+      <div class="ics-kicker">Compare Tiers</div>
+      <h2>Sponsorship Packages &amp; Included Benefits</h2>
+    </div>
+
+    <div class="ics-table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Package Includes</th>
+            <th class="ics-col-title">Title Sponsor<span class="ics-tier-price">Nu. 500,000</span></th>
+            <th>Platinum<span class="ics-tier-price">Nu. 300,000</span></th>
+            <th>Gold<span class="ics-tier-price">Nu. 150,000</span></th>
+            <th>Silver<span class="ics-tier-price">Nu. 50,000</span></th>
+            <th>Exhibitor<span class="ics-tier-price">Nu. 25,000</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Presentation Slot</td>
+            <td class="ics-col-title"><span class="ics-check">&#10003;</span><span class="ics-note">10 min keynote</span></td>
+            <td><span class="ics-check">&#10003;</span><span class="ics-note">5 min, parallel sessions</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+          </tr>
+          <tr>
+            <td>Premium Exhibition Booth / Banner Stands</td>
+            <td class="ics-col-title"><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+          </tr>
+          <tr>
+            <td>Website Profile</td>
+            <td class="ics-col-title"><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+          </tr>
+          <tr>
+            <td>Ad on Website</td>
+            <td class="ics-col-title"><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+          </tr>
+          <tr>
+            <td>Logo on Materials</td>
+            <td class="ics-col-title"><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-dash">&mdash;</span></td>
+          </tr>
+          <tr>
+            <td>Complimentary Passes</td>
+            <td class="ics-col-title">5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Logo on Website</td>
+            <td class="ics-col-title"><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+            <td><span class="ics-check">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>VIP Dinner Tickets</td>
+            <td class="ics-col-title">5</td>
+            <td>4</td>
+            <td>3</td>
+            <td>2</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+  <!-- INTERNATIONAL SPONSORSHIP -->
+  <div class="ics-intl">
+    <div class="ics-container">
+      <div class="ics-section-label">
+        <div class="ics-kicker">For Organisations Outside Bhutan</div>
+        <h2>International Sponsorship Opportunities</h2>
+        <p class="ics-intl-sub">ICSciEnTec 2027 &middot; 5&ndash;7 May 2027 &middot; College of Science and Technology, Royal University of Bhutan</p>
+      </div>
+
+      <div class="ics-intl-grid">
+
+        <div class="ics-intl-card ics-intl-featured">
+          <span class="ics-intl-tier">Diamond</span>
+          <span class="ics-intl-price">10,000 <small>USD</small></span>
+          <ul class="ics-intl-benefits">
+            <li>Highest event association</li>
+            <li>10-min keynote</li>
+            <li>Premium exhibition</li>
+            <li>Prominent branding</li>
+            <li>Passes, dinner tickets, VISA fees &amp; SDF waiver for 5 participants</li>
+          </ul>
+        </div>
+
+        <div class="ics-intl-card">
+          <span class="ics-intl-tier">Gold</span>
+          <span class="ics-intl-price">8,500 <small>USD</small></span>
+          <ul class="ics-intl-benefits">
+            <li>Strong visibility</li>
+            <li>Presentation opportunity</li>
+            <li>Exhibition</li>
+            <li>Branding</li>
+            <li>Passes, dinner tickets, VISA fees &amp; SDF waiver for 3 participants</li>
+          </ul>
+        </div>
+
+        <div class="ics-intl-card">
+          <span class="ics-intl-tier">Silver</span>
+          <span class="ics-intl-price">5,000 <small>USD</small></span>
+          <ul class="ics-intl-benefits">
+            <li>Industry visibility</li>
+            <li>Presentation / parallel-session opportunity</li>
+            <li>Exhibition</li>
+            <li>Branding</li>
+            <li>Passes, dinner tickets, VISA fees &amp; SDF waiver for 2 participants</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="ics-intl-notes">
+        <div class="ics-intl-note-card">
+          <h3>Why Your Support Matters</h3>
+          <p>Your partnership can help create stronger opportunities for students, researchers, innovators and industry to connect, exchange knowledge and explore new possibilities. It also gives partners a meaningful platform to engage with a science and technology community and demonstrate their commitment to future talent and innovation.</p>
+        </div>
+        <div class="ics-intl-note-card">
+          <h3>Let's Explore a Partnership</h3>
+          <p>If your organisation has a particular objective &mdash; technology visibility, talent engagement, research collaboration, industry participation or thought leadership &mdash; we would be pleased to discuss a partnership tailored to your interests.</p>
+        </div>
+      </div>
+
+      <div class="ics-intl-contact">
+        <a href="mailto:treasurer_icscientec.cst@rub.edu.bt" class="ics-intl-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+          treasurer_icscientec.cst@rub.edu.bt
+        </a>
+        <span class="ics-intl-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Chhukha, Bhutan
+        </span>
+        <a href="tel:+97577247178" class="ics-intl-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +975-77247178
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="ics-cta">
+    <div class="ics-container">
+      <div class="ics-kicker">Ready to Partner?</div>
+      <h2>Secure Your Sponsorship</h2>
+      <p>For more information on sponsorship tiers, benefits, or to confirm your package, please reach out to our Treasurer.</p>
+      <div class="ics-cta-links">
+        <a class="ics-button" href="mailto:treasurer_icscientec.cst@rub.edu.bt?subject=ICSciEnTec%202027%20Sponsorship%20Enquiry">
+          Enquire About Sponsorship &rarr;
+        </a>
+        <a class="ics-button ics-button-outline" href="sponsors.html">View Current Sponsors</a>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 
