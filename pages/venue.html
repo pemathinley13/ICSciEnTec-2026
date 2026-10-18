@@ -148,14 +148,14 @@ body {
 }
 .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
 .footer-logo  { font-size: var(--font-md); color: #fff; font-weight: 800; }
-.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; max-width: 320px; line-height: 1.6; }
+.footer-tagline { font-size: 18px; color: rgba(255,255,255,0.35); margin-top: 6px; max-width: 320px; line-height: 1.6; }
 .footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
-.footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(212,175,55,0.85); margin-bottom: 12px; }
+.footer-col-title { font-size: 17px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(212,175,55,0.85); margin-bottom: 12px; }
 .footer-links { display: flex; flex-direction: column; gap: 9px; }
-.footer-link  { color: rgba(255,255,255,0.45); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+.footer-link  { color: rgba(255,255,255,0.45); font-size: 19px; text-decoration: none; transition: color 0.2s; }
 .footer-link:hover { color: var(--gold); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-.footer-copy  { font-size: 12px; color: rgba(255,255,255,0.28); }
+.footer-copy  { font-size: 19px; color: rgba(255,255,255,0.28); }
 
 /* ════ SHARED RESPONSIVE (nav/footer/base type scale) ════ */
 @media (max-width: 1100px) {
@@ -261,18 +261,18 @@ body {
   ICSciEnTec 2027 — "Discover Bhutan" / "Venue" tabbed page
   Paste this whole block into a WordPress "Custom HTML" block/widget.
   Everything is scoped under .icst-bv so it will not leak into your theme.
-  Color + type tokens match the site's teal/gold theme (Manrope + Inter).
+  Color + type tokens match the site's teal/gold theme (Inter throughout).
 ======================================================================== -->
 <div class="icst-bv">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 .icst-bv{
   /* ============== TOKENS — matched to the site's teal/gold theme ============== */
   width: 100vw;
-  --font-heading : 'Manrope', sans-serif;
+  --font-heading : 'Inter', sans-serif;
   --font-body    : 'Inter', sans-serif;
 
   --fs-hero    : clamp(32px, 5.5vw, 54px);
@@ -392,7 +392,7 @@ body {
 .icst-bv .bv-hero .bv-hero-sub{ font-family: var(--font-heading); font-weight:500; font-size: clamp(1.05rem,2.2vw,1.4rem); color: var(--gold-l); margin-top:6px; opacity:0; animation: bvFadeUp 1s .5s ease forwards; }
 .icst-bv .bv-hero p.bv-hero-copy{ max-width:600px; margin-top:20px; font-size:1rem; line-height:1.7; color:rgba(255,255,255,.9); opacity:0; animation: bvFadeUp 1s .65s ease forwards; }
 .icst-bv .bv-hero-actions{ margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; opacity:0; animation: bvFadeUp 1s .8s ease forwards; }
-.icst-bv .bv-btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:999px; font-weight:700; font-size:.9rem; border:2px solid transparent; cursor:pointer; transition:.25s; }
+.icst-bv .bv-btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:8px; font-weight:700; font-size:1.1rem; border:2px solid transparent; cursor:pointer; transition:.25s; }
 .icst-bv .bv-btn.solid{ background: var(--gold); color: var(--dark2); }
 .icst-bv .bv-btn.solid:hover{ background: var(--gold-l); transform: translateY(-2px); }
 .icst-bv .bv-btn.ghost{ border-color: rgba(255,255,255,.5); color:#fff; }
