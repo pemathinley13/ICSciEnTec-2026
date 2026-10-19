@@ -187,6 +187,7 @@ final class Submission
                 if ($newStatus === 'accepted') {
                     \App\Services\EmailService::send('registration_invite', $email, [
                         'authorName'      => $coAuthor['name'],
+                        'authorEmail'     => $email,
                         'submissionTitle' => $current['title'],
                         'submissionId'    => $submissionId,
                         'baseUrl'         => config('app.base_url'),

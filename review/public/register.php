@@ -18,10 +18,14 @@ $receiptPolicy = [
 ];
 
 // Reached via the "your paper was accepted" email as
-// /register.php?submission_id=123 — pre-fills name, email, affiliation and
-// paper title for convenience. The form still works perfectly well without
-// this (anyone — students, academicians, delegates — can fill it in).
+// /register.php?submission_id=123&email=<their own email> — pre-fills name,
+// email, affiliation and paper title for convenience. The &email= param
+// identifies WHICH listed author/co-author is opening the link, so each
+// person sees their own details, not just the corresponding author's.
+// The form still works perfectly well without any of this (anyone —
+// students, academicians, delegates — can fill it in standalone).
 $submissionId = isset($_GET['submission_id']) ? (int) $_GET['submission_id'] : null;
+$linkEmail = isset($_GET['email']) ? strtolower(trim((string) $_GET['email'])) : null;
 $prefill = ['full_name' => '', 'email' => '', 'organisation' => '', 'paper_title' => ''];
 $prefillMode = null;
 if ($submissionId) {
@@ -29,11 +33,32 @@ if ($submissionId) {
     if ($submission) {
         $prefill['paper_title'] = $submission['title'];
         $prefillMode = 'with_paper';
-        $author = User::findById((int) $submission['corresponding_author_id']);
-        if ($author) {
-            $prefill['full_name'] = $author['full_name'];
-            $prefill['email'] = $author['email'];
-            $prefill['organisation'] = $author['affiliation'] ?? '';
+
+        $matchedAuthor = null;
+        if ($linkEmail !== null) {
+            foreach (Submission::authorsFor($submissionId) as $coAuthor) {
+                if (strtolower(trim($coAuthor['email'] ?? '')) === $linkEmail) {
+                    $matchedAuthor = $coAuthor;
+                    break;
+                }
+            }
+        }
+
+        if ($matchedAuthor) {
+            // The specific co-author who received this link — prefill from the
+            // submission_authors row itself (name/email as entered at submission time).
+            $prefill['full_name'] = $matchedAuthor['name'];
+            $prefill['email'] = $matchedAuthor['email'];
+            $prefill['organisation'] = $matchedAuthor['affiliation'] ?? '';
+        } else {
+            // No matching ?email= (or none given) — fall back to the corresponding
+            // author's account details, same as opening the link with no email param.
+            $author = User::findById((int) $submission['corresponding_author_id']);
+            if ($author) {
+                $prefill['full_name'] = $author['full_name'];
+                $prefill['email'] = $author['email'];
+                $prefill['organisation'] = $author['affiliation'] ?? '';
+            }
         }
     } else {
         $submissionId = null; // bad id in the URL — just fall back to a blank, standalone form

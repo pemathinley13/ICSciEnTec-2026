@@ -1,10 +1,12 @@
 <?php
 /**
- * Vars expected: $authorName, $submissionTitle, $submissionId, $baseUrl
+ * Vars expected: $authorName, $authorEmail, $submissionTitle, $submissionId, $baseUrl
  * Sent alongside the "accepted" status_update email — gives the author (and
  * every listed co-author) the link to complete their conference registration.
+ * Each recipient's own email is included in the link so the form pre-fills
+ * THEIR details, not just the corresponding author's.
  */
-$registerUrl = $baseUrl . '/register.php?submission_id=' . (int) $submissionId;
+$registerUrl = $baseUrl . '/register.php?submission_id=' . (int) $submissionId . '&email=' . urlencode($authorEmail);
 ?>
 <p>Dear <?= htmlspecialchars($authorName) ?>,</p>
 
