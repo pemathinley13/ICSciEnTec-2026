@@ -215,11 +215,10 @@ require __DIR__ . '/../templates/layout_start.php';
         <div class="split-col">
           <div class="form-section-title" style="margin-bottom:10px;">Bank Details</div>
           <table style="margin-bottom:10px;">
-            <tr><th style="width:42%;">Account Name</th><td>College Development Fund (CDF)</td></tr>
+            <tr><th style="width:42%;">Account Name</th><td>CST, BNBL Scholarship Fund</td></tr>
             <tr><th>Bank Name</th><td>Bhutan National Bank</td></tr>
             <tr><th>Branch</th><td>Phuentsholing Main Branch</td></tr>
-            <tr><th>Account No.</th><td>1234567890</td></tr>
-            <tr><th>SWIFT Code</th><td>BHUBTBT001</td></tr>
+            <tr><th>Account No.</th><td>640009909</td></tr>
           </table>
           <p class="field-hint">
             Please use <strong>ICSciEnTec2027</strong> as the payment remark / reference.
