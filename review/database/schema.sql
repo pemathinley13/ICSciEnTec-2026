@@ -139,4 +139,36 @@ CREATE TABLE IF NOT EXISTS password_resets (
   CONSTRAINT fk_pr_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- ─────────────────────────────────────────────────────────────────────────
+-- Conference registration — the public "5th ICSciEnTec 2027 Registration
+-- Form" that replaces the old Google Form. Standalone (open to anyone:
+-- students, academicians, organisation authors, delegates), but optionally
+-- linked to a submission when reached via the accepted-paper email so the
+-- paper title can be pre-filled. Payment is handled off-form (bank details
+-- shown on the page; proof emailed to the secretary/treasurer directly) —
+-- no transaction upload is stored here.
+-- ─────────────────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS registrations (
+  id                   INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  submission_id        INT UNSIGNED NULL,
+  full_name            VARCHAR(150) NOT NULL,
+  email                VARCHAR(190) NOT NULL,
+  sex                  ENUM('male','female') NOT NULL,
+  role                 ENUM('student','academician','author_org','other') NOT NULL,
+  role_other           VARCHAR(150) NULL,
+  participation_mode   ENUM('with_paper','without_paper','other') NOT NULL,
+  participation_other  VARCHAR(150) NULL,
+  paper_title          VARCHAR(300) NOT NULL,
+  organisation         VARCHAR(200) NOT NULL,
+  country              VARCHAR(100) NOT NULL,
+  receipt_stored_filename   VARCHAR(255) NOT NULL COMMENT 'random/hashed name on disk, never the user-supplied name',
+  receipt_original_filename VARCHAR(255) NOT NULL,
+  receipt_mime_type         VARCHAR(120) NOT NULL,
+  receipt_size_bytes        INT UNSIGNED NOT NULL,
+  created_at           DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY idx_reg_submission (submission_id),
+  KEY idx_reg_email (email),
+  CONSTRAINT fk_reg_submission FOREIGN KEY (submission_id) REFERENCES submissions(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 SET FOREIGN_KEY_CHECKS = 1;

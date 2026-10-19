@@ -20,6 +20,7 @@ require __DIR__ . '/../../templates/layout_start.php';
 <div class="card">
   <p style="display:flex;gap:12px;flex-wrap:wrap;">
     <a href="/admin/submissions.php" class="btn-primary">All Submissions</a>
+    <a href="/admin/registrations.php" class="btn-secondary">Conference Registrations</a>
     <a href="/admin/users.php" class="btn-secondary">Manage Users &amp; Roles</a>
     <a href="/admin/tracks.php" class="btn-secondary">Manage Tracks</a>
     <a href="/admin/audit_log.php" class="btn-secondary">Audit Log</a>

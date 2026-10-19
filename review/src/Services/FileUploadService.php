@@ -19,14 +19,17 @@ final class FileUploadService
 {
     /**
      * @param array $uploadedFile one entry from $_FILES, already checked by
-     *              SubmissionValidator for extension/size/upload error
+     *              the caller's validator for extension/size/upload error
+     * @param string $subdir which storage/uploads/<subdir>/ bucket to use —
+     *              keeps different upload kinds (submissions, registration
+     *              payment receipts, ...) in their own folders
      * @return array{stored_filename:string,original_filename:string,mime_type:string,size_bytes:int}
      */
-    public static function store(array $uploadedFile): array
+    public static function store(array $uploadedFile, string $subdir = 'submissions'): array
     {
         $config = require dirname(__DIR__, 2) . '/config/config.php';
         $storageRoot = rtrim($config['uploads']['storage_path'], '/');
-        $targetDir = $storageRoot . '/uploads/submissions';
+        $targetDir = $storageRoot . '/uploads/' . $subdir;
 
         if (!is_dir($targetDir) && !mkdir($targetDir, 0750, true) && !is_dir($targetDir)) {
             throw new RuntimeException("Could not create upload directory: {$targetDir}");
@@ -54,7 +57,7 @@ final class FileUploadService
         chmod($destination, 0640);
 
         return [
-            'stored_filename'   => 'submissions/' . $randomName,
+            'stored_filename'   => $subdir . '/' . $randomName,
             'original_filename' => basename($uploadedFile['name']),
             'mime_type'         => $detectedMime,
             'size_bytes'        => (int) $uploadedFile['size'],

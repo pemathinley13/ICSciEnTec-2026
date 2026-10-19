@@ -181,6 +181,17 @@ final class Submission
                     'newStatus'       => $newStatus,
                     'baseUrl'         => config('app.base_url'),
                 ], $submissionId);
+
+                // Accepted papers also get the Conference Registration Form link,
+                // pre-filled via ?submission_id= — see templates/emails/registration_invite.php.
+                if ($newStatus === 'accepted') {
+                    \App\Services\EmailService::send('registration_invite', $email, [
+                        'authorName'      => $coAuthor['name'],
+                        'submissionTitle' => $current['title'],
+                        'submissionId'    => $submissionId,
+                        'baseUrl'         => config('app.base_url'),
+                    ], $submissionId);
+                }
             }
         }
     }
