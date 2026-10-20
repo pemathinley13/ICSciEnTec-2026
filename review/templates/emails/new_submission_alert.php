@@ -17,6 +17,6 @@
   <a href="<?= htmlspecialchars($baseUrl) ?>/admin/submissions.php"><?= htmlspecialchars($baseUrl) ?>/admin/submissions.php</a>
 </p>
 
-<p>Regards,<br>ICSciEnTec Review System</p>
+<p>Regards,<br>ICSciEnTec Submission System</p>
 <?php
 return "ICSciEnTec — New Submission: " . $submissionTitle;

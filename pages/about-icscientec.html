@@ -467,10 +467,18 @@ html { scroll-behavior: smooth; }
 
 .ab-hero-desc {
   font-family: var(--font-body);
-  font-size: 15px; color: rgba(255,255,255,0.68);
+  font-size: 20px; color: rgba(255,255,255,0.68);
   max-width: 620px; margin: 0 auto;
   line-height: 1.78; font-weight: 300;
 }
+.ab-about-text {
+  font-family: var(--font-body);
+  font-size: 18px; line-height: 1.9;
+  color: var(--text); text-align: justify; text-justify: inter-word;
+  letter-spacing: 0.1px;
+}
+.ab-about-text + .ab-about-text { margin-top: 20px; }
+.ab-about-text strong { color: var(--dark); font-weight: 700; }
 .ab-hero-line {
   width: 48px; height: 3px;
   background: var(--gold);
@@ -667,7 +675,7 @@ html { scroll-behavior: smooth; }
 }
 .ab-aim-card ul li {
   font-family: var(--font-body);
-  font-size: var(--fs-body); color: var(--text-muted);
+  font-size: 17px; color: var(--text-muted);
   line-height: 1.7; display: flex; align-items: flex-start; gap: 10px;
 }
 .ab-aim-card ul li::before {
@@ -684,7 +692,7 @@ html { scroll-behavior: smooth; }
   background: var(--bg); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 10px 14px;
   font-family: var(--font-body);
-  font-size: 15px; font-weight: 500; color: var(--text);
+  font-size: 18px; font-weight: 500; color: var(--text);
   transition: all .22s ease;
 }
 .ab-who-item:hover { background: var(--teal-bg); border-color: var(--teal-bg2); color: var(--teal); }
@@ -1082,11 +1090,11 @@ html { scroll-behavior: smooth; }
       <h3>
         International Conference on Science, Engineering &amp; Technology
       </h3>
-      <p style="text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; -ms-hyphens: auto;">
+      <p class="ab-about-text">
         The International Conference on Science, Engineering and Technology (ICSciEnTec) is an annual international conference dedicated to advancing research, innovation, and knowledge exchange in science, engineering, and emerging technologies. The conference provides a dynamic platform for researchers, academicians, industry professionals, policymakers, and innovators from around the world to share ideas, present research findings, and explore solutions to contemporary global challenges.
       </p>
-      <p style="margin-top:14px; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; -ms-hyphens: auto;">
-        Organized by the <strong style="color:var(--dark);">IEEE R10 Bhutan Subsection</strong>, the <strong style="color:var(--dark);">College of Science and Technology (CST), Royal University of Bhutan</strong>, and <strong style="color:var(--dark);">Construction Development Corporation Limited (CDCL)</strong>, ICSciEnTec promotes interdisciplinary collaboration and strengthens the connection between academia, industry, and technological advancement. Through keynote addresses, technical sessions, paper presentations, and networking opportunities, ICSciEnTec fosters meaningful dialogue, encourages innovative thinking, and contributes to sustainable scientific and technological development.
+      <p class="ab-about-text">
+        Organized by the <strong>College of Science and Technology (CST), Royal University of Bhutan</strong>, ICSciEnTec promotes interdisciplinary collaboration and strengthens the connection between academia, industry, and technological advancement. Through keynote addresses, technical sessions, paper presentations, and networking opportunities, ICSciEnTec fosters meaningful dialogue, encourages innovative thinking, and contributes to sustainable scientific and technological development.
       </p>
     </div>
   </div>
@@ -1178,10 +1186,7 @@ html { scroll-behavior: smooth; }
         <div class="tl-right">
           <div class="tl-card">
             <div class="tl-year" style="color:var(--gold);">2026</div>
-            <div class="tl-edition" style="display:flex;align-items:center;gap:6px;">
-              4th ICSciEnTec
-              <span style="font-size:9px;font-weight:800;background:rgba(198,148,68,0.12);border:1px solid rgba(198,148,68,0.3);color:var(--gold);padding:2px 8px;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;">Current</span>
-            </div>
+            <div class="tl-edition">4th ICSciEnTec</div>
             <div class="tl-meta">
               <div class="tl-meta-row"><i class="fas fa-calendar-alt"></i> April 28 - 30, 2026</div>
               <div class="tl-meta-row"><i class="fas fa-location-dot"></i> Namgay Heritage, Thimphu</div>
@@ -1197,6 +1202,29 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
 
+      <!-- 2027 — left (current) -->
+      <div class="tl-item ab-anim-up ab-d5">
+        <div class="tl-left">
+          <div class="tl-card">
+            <div class="tl-year" style="color:var(--gold);">2027</div>
+            <div class="tl-edition" style="display:flex;align-items:center;gap:6px;">
+              5th ICSciEnTec
+              <span style="font-size:9px;font-weight:800;background:rgba(198,148,68,0.12);border:1px solid rgba(198,148,68,0.3);color:var(--gold);padding:2px 8px;border-radius:99px;letter-spacing:1.5px;text-transform:uppercase;">Current</span>
+            </div>
+            <div class="tl-meta">
+              <div class="tl-meta-row"><i class="fas fa-calendar-alt"></i> May 5 - 7, 2027</div>
+              <div class="tl-meta-row"><i class="fas fa-location-dot"></i> OVC, RUB, Thimphu</div>
+            </div>
+            <div style="font-size:11.5px;color:var(--text-faint);margin-top:8px;font-style:italic;">Other details coming soon</div>
+          </div>
+        </div>
+        <div class="tl-center">
+          <div class="tl-dot" style="background:var(--gold);box-shadow:0 0 0 3px rgba(198,148,68,0.35);"></div>
+          <div class="tl-tick"></div>
+        </div>
+        <div class="tl-right"></div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1205,7 +1233,6 @@ html { scroll-behavior: smooth; }
 <div style="background:var(--bg);">
   <div class="ab-section">
     <div class="ab-section-title ab-anim-up">
-      <p class="ab-eyebrow">Purpose &amp; Audience</p>
       <h2>Objectives &amp; Who Should Attend</h2>
       <div class="ab-title-line"></div>
     </div>
@@ -1241,8 +1268,7 @@ html { scroll-behavior: smooth; }
 <div class="ab-theme-bg" style="font-family: 'Inter', sans-serif; color: #ffffff;">
   <div class="ab-section" style="position:relative;z-index:1;">
     <div class="ab-section-title ab-anim-up">
-      <p class="ab-eyebrow" style="color: #ffffff; opacity: 0.8;">Conference Tracks</p>
-      <h2 style="color: #ffffff;">Potential Tracks</h2>
+      <h2 style="color: #ffffff;">Conference Tracks</h2>
       <div class="ab-title-line" style="background-color: #ffffff;"></div>
     </div>
     
@@ -1302,6 +1328,7 @@ html { scroll-behavior: smooth; }
           <span class="ab-track-pill">Green Policy</span>
           <span class="ab-track-pill">Circular Economy</span>
           <span class="ab-track-pill">Hydrological Modeling</span>
+          <span class="ab-track-pill">Nature-based Solution</span>
         </div>
       </div>
 
@@ -1338,7 +1365,7 @@ html { scroll-behavior: smooth; }
   <div class="footer-top">
     <div>
       <div class="footer-logo">ICSciEnTec</div>
-      <p class="footer-tagline">International Conference on Science, Engineering &amp; Technology — organised by IEEE R10 Bhutan Subsection, College of Science and Technology (CST-RUB), and Construction Development Corporation Limited (CDCL).</p>
+      <p class="footer-tagline">International Conference on Science, Engineering &amp; Technology — organised by College of Science and Technology (CST-RUB).</p>
     </div>
     <div class="footer-cols">
       <div>

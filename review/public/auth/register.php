@@ -51,7 +51,7 @@ $user = null;
 require __DIR__ . '/../../templates/layout_start.php';
 ?>
 <div class="portal-hero">
-  <span class="portal-hero-badge"><span class="portal-hero-badge-dot"></span>ICSciEnTec Review Portal</span>
+  <span class="portal-hero-badge"><span class="portal-hero-badge-dot"></span>ICSciEnTec Submission Portal</span>
   <h1>Create Your <span class="gold">Author Account</span></h1>
   <p>Register once to submit papers, track their status through review, and receive decision notifications.</p>
   <div class="portal-hero-bar"></div>

@@ -3,7 +3,7 @@
  * Expects (all optional): $pageTitle, $user (assoc array from Rbac::requireRole,
  * or null on public pages like login), $activeNav (string key for nav highlight).
  */
-$pageTitle = $pageTitle ?? 'ICSciEnTec Review';
+$pageTitle = $pageTitle ?? 'ICSciEnTec Submission';
 $loggedInRoles = isset($user['id']) ? \App\Models\User::rolesFor((int) $user['id']) : [];
 ?>
 <!DOCTYPE html>
@@ -11,14 +11,14 @@ $loggedInRoles = isset($user['id']) ? \App\Models\User::rolesFor((int) $user['id
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= e($pageTitle) ?> — ICSciEnTec Review</title>
+<title><?= e($pageTitle) ?> — ICSciEnTec Submission</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 <body>
 <header class="topbar">
-  <a href="https://icscientec.cst.edu.bt/" class="brand"><span class="brand-name">ICSciEnTec</span><span class="brand-sub">Review Portal</span></a>
+  <a href="https://icscientec.cst.edu.bt/" class="brand"><span class="brand-name">ICSciEnTec</span><span class="brand-sub">Submission Portal</span></a>
   <?php if ($user): ?>
   <nav class="topnav">
     <?php if (in_array('author', $loggedInRoles, true)): ?>

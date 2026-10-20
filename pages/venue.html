@@ -271,7 +271,8 @@ body {
 <style>
 .icst-bv{
   /* ============== TOKENS — matched to the site's teal/gold theme ============== */
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   --font-heading : 'Inter', sans-serif;
   --font-body    : 'Inter', sans-serif;
 
@@ -395,8 +396,8 @@ body {
 .icst-bv .bv-btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:8px; font-weight:700; font-size:1.1rem; border:2px solid transparent; cursor:pointer; transition:.25s; }
 .icst-bv .bv-btn.solid{ background: var(--gold); color: var(--dark2); }
 .icst-bv .bv-btn.solid:hover{ background: var(--gold-l); transform: translateY(-2px); }
-.icst-bv .bv-btn.ghost{ border-color: rgba(255,255,255,.5); color:#fff; }
-.icst-bv .bv-btn.ghost:hover{ background: rgba(255,255,255,.12); transform: translateY(-2px); }
+.icst-bv .bv-btn.ghost{ border-color: rgba(255,255,255,.5); color:#fff; background: rgba(20,30,35,.45); }
+.icst-bv .bv-btn.ghost:hover{ border-color: var(--gold-l); background: rgba(20,30,35,.65); transform: translateY(-2px); }
 .icst-bv .bv-btn.teal{ background: var(--teal); color:#fff; }
 .icst-bv .bv-btn.teal:hover{ background: var(--teal-l); transform: translateY(-2px); }
 
@@ -490,9 +491,6 @@ body {
 .icst-bv .bv-conf-home p{ color: var(--text-muted); max-width:480px; margin:0 auto 22px; font-size: var(--fs-body); line-height:1.7; }
 
 /* ---------- footer ---------- */
-.icst-bv .bv-footer{ background: var(--dark2); color: rgba(255,255,255,.7); padding:30px 24px; text-align:center; font-size:.8rem; }
-.icst-bv .bv-footer b{ color: var(--gold-l); }
-.icst-bv .bv-footer a{ text-decoration:underline; }
 
 /* ---------- back to top ---------- */
 .icst-bv .bv-top{ position:fixed; right:22px; bottom:22px; width:46px; height:46px; border-radius:50%; background: var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:.3s; z-index:50; box-shadow: var(--shadow-lg); cursor:pointer; }
@@ -513,10 +511,15 @@ body {
   .icst-bv .bv-tab{ font-size:.8rem; }
   .icst-bv .bv-tab + .bv-tab{ margin-left:14px; }
   .icst-bv .bv-hero{ min-height:74vh; }
+  .icst-bv .bv-hero-actions{ flex-direction:column; align-items:stretch; }
+  .icst-bv .bv-btn{ justify-content:center; }
   .icst-bv .bv-facts{ flex-direction:column; }
   .icst-bv .bv-culture-grid{ grid-template-columns:1fr; }
-  .icst-bv .bv-fac-grid{ grid-template-columns:1fr; }
   .icst-bv .bv-bento{ grid-template-columns:1fr; }
+  .icst-bv .bv-panel{ padding:20px; }
+  .icst-bv .bv-panel .bv-def{ flex-direction:column; gap:4px; }
+  .icst-bv .bv-panel .bv-def b{ min-width:0; }
+  .icst-bv .bv-map-wrap iframe{ height:240px; }
 }
 @media (prefers-reduced-motion: reduce){
   .icst-bv *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
@@ -551,8 +554,8 @@ body {
   <section class="bv-tabpanel is-active" id="bv-panel-about" role="tabpanel" aria-labelledby="bv-tab-about">
 
     <div class="bv-banner">
-      <span class="bv-eyebrow">Welcome To The Kingdom</span>
-      <h2>About <span class="bv-accent">Bhutan</span></h2>
+      <span class="bv-eyebrow" style="font-size:14.5px;">Welcome To The Kingdom</span>
+      <h2>Of <span class="bv-accent">Bhutan</span></h2>
       <p>A premier Himalayan destination blending living heritage, protected wilderness and a nation
         that measures progress by happiness as much as growth.</p>
       <div class="bv-rule"></div>
@@ -563,11 +566,11 @@ body {
         <div class="bv-reveal">
           <span class="bv-eyebrow dark">Where Tradition Meets The Himalayas</span>
           <h2>A Kingdom Unlike Any Other</h2>
-          <p>Tucked between India and Tibet, Bhutan is one of the world's most tightly guarded secrets — a
-            carbon-negative kingdom that measures progress not only in GDP, but in <strong>Gross National
-            Happiness</strong>. Whitewashed dzongs, saffron-robed monks and terraced rice fields sit beneath
-            snow-capped Himalayan peaks that have never been mapped by climbers.</p>
-          <p>For delegates of ICSciEnTec 2027, Bhutan offers more than a backdrop — it offers a rare chance
+          <p>Bhutan is one of the world's most tightly guarded secrets. As a carbon-negative kingdom, Bhutan
+            measures progress not only in GDP but in <strong>Gross National Happiness</strong>. Whitewashed
+            dzongs, saffron-robed monks and terraced rice fields sit beneath snow-capped Himalayan peaks that
+            have never been mapped by climbers.</p>
+          <p>For delegates of ICSciEnTec 2027, Bhutan offers more than a backdrop. It offers a rare chance
             to experience a living culture that has protected its forests, its architecture and its identity
             while quietly becoming a hub for renewable energy, engineering and technology research in the
             Eastern Himalayas.</p>
@@ -673,8 +676,8 @@ body {
 
     <div class="bv-banner">
       <span class="bv-eyebrow">ICSciEnTec 2027 &middot; Conference Venue</span>
-      <h2>Royal University of <span class="bv-accent">Bhutan</span></h2>
-      <p>College of Science and Technology (CST) &middot; Rinchending, Phuentsholing</p>
+      <h2>Office of the Vice Chancellor, <span class="bv-accent">RUB</span></h2>
+      <p>Royal University of Bhutan &middot; Motithang, Thimphu</p>
       <div class="bv-rule"></div>
     </div>
 
@@ -682,88 +685,44 @@ body {
       <div class="bv-venue-grid">
         <div class="bv-panel bv-reveal">
           <h3>About the Venue</h3>
-          <p class="bv-lede">The College of Science and Technology (CST) is a constituent college of the
-            <strong>Royal University of Bhutan (RUB)</strong> and the country's premier institution for
-            engineering and technology education. First established in 1972 as the Royal Bhutan Polytechnic,
-            the college moved to its present campus at Rinchending in 2000 and became the first institution
-            in Bhutan to offer Bachelor's degrees, in Civil and Electrical Engineering. It has since grown
-            into a full-fledged college offering undergraduate and Master's programmes across engineering,
-            architecture and construction management.</p>
-          <div class="bv-def"><b>Institution</b><span>College of Science and Technology (CST), Royal University of Bhutan</span></div>
-          <div class="bv-def"><b>Location</b><span>Rinchending, Phuentsholing, Chukha District, Bhutan</span></div>
-          <div class="bv-def"><b>Postal Address</b><span>Post Box No. 450, Postal Code 21101, Phuentsholing, Bhutan</span></div>
-          <div class="bv-def"><b>Programmes</b><span>Civil, Electrical, Electronics &amp; Communication, IT, Mechanical, Architecture, Instrumentation &amp; Control, Water Resource &amp; Software Engineering</span></div>
-          <div class="bv-def"><b>Conference Host</b><span>Organised with IEEE R10 Bhutan Subsection &amp; CDCL</span></div>
+          <p class="bv-lede">ICSciEnTec 2027 will be held at the Office of the Vice Chancellor (OVC), Royal
+            University of Bhutan, located in the serene Motithang neighbourhood of Thimphu, Bhutan's capital.
+            As the central office of Bhutan's first and largest university system, the OVC provides a fitting
+            home for the conference, with a modern conference hall, breakout rooms for parallel sessions,
+            audio-visual facilities, Wi-Fi, and dedicated spaces for networking and refreshments.</p>
+          <p class="bv-lede">Set at about 2,300 metres amid pine-covered hills, Thimphu is famously the only
+            capital with no traffic lights, blending tradition with modern life. Within easy reach of the venue
+            are the Motithang Takin Preserve, Buddha Dordenma, Tashichho Dzong, the National Memorial Chorten
+            and the Centenary Farmers' Market. Further afield, participants can enjoy Himalayan views at
+            Dochula Pass or hike to the iconic Tiger's Nest Monastery near Paro International Airport, making
+            ICSciEnTec 2027 both an academic and a cultural experience.</p>
+          <div class="bv-def"><b>Institution</b><span>Office of the Vice Chancellor, Royal University of Bhutan</span></div>
+          <div class="bv-def"><b>Location</b><span>Motithang, Thimphu, Bhutan</span></div>
+          <div class="bv-def"><b>Elevation</b><span>Approximately 2,300 metres, amid pine-covered hills</span></div>
         </div>
 
         <div class="bv-reveal">
           <div class="bv-map-wrap">
             <iframe
-              src="https://www.google.com/maps?q=College%20of%20Science%20and%20Technology%2C%20Rinchending%2C%20Phuentsholing%2C%20Bhutan&output=embed"
+              src="https://www.google.com/maps?q=Royal%20University%20of%20Bhutan%2C%20Office%20of%20the%20Vice%20Chancellor%2C%20Motithang%2C%20Thimphu%2C%20Bhutan&output=embed"
               loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              title="Map location of College of Science and Technology, Phuentsholing, Bhutan"></iframe>
+              title="Map location of the Office of the Vice Chancellor, Royal University of Bhutan, Thimphu"></iframe>
           </div>
           <div class="bv-travel">
             <h4>Getting There</h4>
             <p><strong>By air:</strong> Fly into Paro International Airport, Bhutan's only international
-              gateway, then travel onward by road to Phuentsholing.</p>
-            <p><strong>By land:</strong> Phuentsholing sits directly on the Bhutan&ndash;India border, adjoining
-              the Indian town of Jaigaon (West Bengal) — a common overland route for delegates travelling
-              from India, Bangladesh and Nepal.</p>
-            <p>Visa and permit requirements vary by nationality — please confirm current rules before booking travel.</p>
+              gateway, then travel onward by road to Thimphu.</p>
+            <p><strong>By land:</strong> Enter Phuentsholing through Jaigaon (West Bengal) and then travel by
+              road to Thimphu. This is a common overland route for participants travelling from India,
+              Bangladesh and Nepal.</p>
+            <p>Visa and permit requirements vary by nationality; please confirm current rules before booking travel.</p>
           </div>
         </div>
-      </div>
-
-      <div class="bv-facilities bv-reveal">
-        <div class="bv-section-head" style="margin-bottom:0;">
-          <span class="bv-eyebrow dark">On Campus</span>
-          <h2 style="font-size:clamp(1.7rem,3.2vw,2.2rem);">Facilities for Delegates</h2>
-          <div class="bv-rule"></div>
-        </div>
-        <div class="bv-fac-grid">
-          <div class="bv-fac-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v14"/></svg>
-            <h4>Auditorium &amp; Seminar Halls</h4>
-            <p>Tiered seating and breakout rooms for plenaries and parallel technical sessions.</p>
-          </div>
-          <div class="bv-fac-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg>
-            <h4>On-Campus Accommodation</h4>
-            <p>Hostel and guest-room options within walking distance of session venues.</p>
-          </div>
-          <div class="bv-fac-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
-            <h4>Labs &amp; Studios</h4>
-            <p>Engineering, architecture and computing labs available for demonstrations.</p>
-          </div>
-          <div class="bv-fac-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 11a8 8 0 0116 0M2 11h20M12 11v10"/></svg>
-            <h4>Connectivity &amp; Support</h4>
-            <p>Campus-wide Wi-Fi and a dedicated conference help-desk throughout the event.</p>
-          </div>
-        </div>
-        <p style="text-align:center;color:var(--text-muted);font-size:.8rem;margin-top:20px;">
-          Facility list is indicative — please confirm the final arrangements with the ICSciEnTec 2027 organising committee.
-        </p>
-      </div>
-
-      <!-- Conference Home — appears ONLY here inside the Venue panel -->
-      <div class="bv-conf-home bv-reveal">
-        <h3>Join Us at ICSciEnTec 2027, RUB &ndash; CST</h3>
-        <p>Explore submission deadlines, registration and the full programme on the official conference site.</p>
-        <a class="bv-btn teal" href="https://icscientec.cst.edu.bt/" target="_blank" rel="noopener">Conference Home &rarr;</a>
       </div>
     </div>
   </section>
 
 </div><!-- /.bv-panels -->
-
-<!-- ========================= FOOTER ========================= -->
-<footer class="bv-footer">
-  <p><b>College of Science and Technology</b>, Royal University of Bhutan &middot; Rinchending, Phuentsholing, Chukha, Bhutan</p>
-  <p style="margin-top:6px;">Post Box 450, Postal Code 21101 &middot; <a href="mailto:info.cst@rub.edu.bt">info.cst@rub.edu.bt</a></p>
-</footer>
 
 <div class="bv-top" id="bvTop" aria-label="Back to top" role="button" tabindex="0">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
@@ -839,7 +798,7 @@ body {
   <div class="footer-top">
     <div>
       <div class="footer-logo">ICSciEnTec</div>
-      <p class="footer-tagline">International Conference on Science, Engineering &amp; Technology — organised by IEEE R10 Bhutan Subsection, College of Science and Technology (CST-RUB), and Construction Development Corporation Limited (CDCL).</p>
+      <p class="footer-tagline">International Conference on Science, Engineering &amp; Technology — organised by College of Science and Technology (CST-RUB).</p>
     </div>
     <div class="footer-cols">
       <div>
