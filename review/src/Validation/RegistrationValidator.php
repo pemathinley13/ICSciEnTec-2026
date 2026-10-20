@@ -45,10 +45,6 @@ final class RegistrationValidator
             $errors['participation_other'] = 'Please specify your participation mode.';
         }
 
-        if (trim($input['paper_title'] ?? '') === '') {
-            $errors['paper_title'] = 'Title of paper is required.';
-        }
-
         if (trim($input['organisation'] ?? '') === '') {
             $errors['organisation'] = 'Organisation / affiliation is required.';
         }

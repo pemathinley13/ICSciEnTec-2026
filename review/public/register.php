@@ -178,8 +178,8 @@ require __DIR__ . '/../templates/layout_start.php';
       <?php if (!empty($errors['participation_mode'])): ?><div class="field-error"><?= e($errors['participation_mode']) ?></div><?php endif; ?>
       <?php if (!empty($errors['participation_other'])): ?><div class="field-error"><?= e($errors['participation_other']) ?></div><?php endif; ?>
 
-      <label for="paper_title">Title of Paper <span class="required">*</span></label>
-      <input type="text" id="paper_title" name="paper_title" value="<?= e(regOld('paper_title', $prefill['paper_title'])) ?>" required>
+      <label for="paper_title">Title of Paper</label>
+      <input type="text" id="paper_title" name="paper_title" value="<?= e(regOld('paper_title', $prefill['paper_title'])) ?>">
       <?php if (!empty($errors['paper_title'])): ?><div class="field-error"><?= e($errors['paper_title']) ?></div><?php endif; ?>
     </div>
 
