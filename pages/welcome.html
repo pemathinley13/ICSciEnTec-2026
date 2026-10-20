@@ -729,62 +729,45 @@ body {
   border-radius: 2px; margin: 16px auto 0;
 }
 
-.pv-group-label {
-  font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--teal); margin: 0 0 22px; display: flex; align-items: center; gap: 12px;
-  justify-content: center;
+/* ── 2027 Sponsors — tiered grid ── */
+.sp-tier { margin-bottom: 52px; }
+.sp-tier:last-child { margin-bottom: 0; }
+.sp-tier-label {
+  font-size: 16px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+  margin: 0 0 22px; display: flex; align-items: center; gap: 12px; justify-content: center;
 }
-.pv-group-label::before, .pv-group-label::after { content: ''; width: 28px; height: 1px; background: rgba(26,101,119,0.2); }
-.pv-block + .pv-block { margin-top: 56px; }
+.sp-tier-label::before, .sp-tier-label::after { content: ''; width: 28px; height: 1px; background: rgba(26,101,119,0.2); }
+.sp-tier-label.tier-title    { color: #1a4a5c; }
+.sp-tier-label.tier-platinum { color: #6b7684; }
+.sp-tier-label.tier-gold     { color: var(--gold); }
+.sp-tier-label.tier-silver   { color: #8a95a0; }
+.sp-card-tag { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; display: block; text-align: center; }
+.sp-card-tag.tier-platinum { color: #6b7684; }
+.sp-card-tag.tier-gold     { color: var(--gold); }
 
-.pv-strip {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 26px;
-}
+.sp-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
 
-/* Simple, traditional partner card: logo on top, name + description below. */
-.pv-tile {
-  width: 220px; border-radius: 14px;
-  background: var(--white); border: 1px solid rgba(26,101,119,0.12);
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  gap: 12px; padding: 28px 20px;
-  box-shadow: 0 2px 12px rgba(26,101,119,0.05);
-  opacity: 0; transform: translateY(18px);
-  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.35s cubic-bezier(0.22,1,0.36,1);
+.sp-card {
+  width: 230px; min-height: 150px; border-radius: 14px;
+  background: var(--white); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 24px; box-shadow: 0 2px 12px rgba(26,101,119,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.pv-tile.pv-in { opacity: 1; transform: translateY(0); }
-.pv-tile:nth-child(2) { transition-delay: 0.06s; }
-.pv-logo { height: 64px; display: flex; align-items: center; justify-content: center; }
-.pv-tile img { max-width: 160px; max-height: 64px; object-fit: contain; }
-.pv-fallback { font-size: 22px; font-weight: 800; color: var(--teal); }
-.pv-name { font-size: 18px; font-weight: 800; color: var(--dark); line-height: 1.35; }
-.pv-desc { font-size: 16.5px; color: var(--muted); line-height: 1.65; }
+.sp-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(26,101,119,0.1); }
+.sp-card img { max-width: 100%; max-height: 92px; width: auto; height: auto; object-fit: contain; }
+.sp-card .sp-placeholder { font-size: 20px; font-weight: 800; color: var(--muted); letter-spacing: 0.04em; }
+.sp-logo-generic { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.sp-logo-generic svg { width: 46px; height: 46px; color: var(--muted); opacity: 0.7; }
+.sp-logo-generic span { font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: 0.03em; text-align: center; }
+
+.sp-card.tier-title    { border: 2px solid #1a4a5c; box-shadow: 0 10px 28px rgba(26,74,92,0.16); }
+.sp-card.tier-platinum { border: 1px solid #a9b2bb; }
+.sp-card.tier-gold     { border: 1px solid var(--gold); }
+.sp-card.tier-silver   { border: 1px solid #b9c1c8; }
 
 @media (max-width: 700px) {
-  .pv-tile { width: 165px; padding: 22px 16px; }
-}
-
-/* ── Lead Organiser — landscape layout (single entry) ── */
-.pv-lead-card {
-  display: flex; align-items: center; justify-content: center;
-  gap: 40px;
-  max-width: 740px; margin: 0 auto;
-  background: var(--white); border: 1px solid rgba(26,101,119,0.12);
-  border-radius: 14px;
-  padding: 40px 48px;
-  box-shadow: 0 2px 12px rgba(26,101,119,0.05);
-}
-.pv-lead-logo { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.pv-lead-logo img { max-width: 230px; max-height: 120px; object-fit: contain; }
-.pv-lead-logo .pv-fallback { font-size: 30px; }
-.pv-lead-divider { width: 1px; align-self: stretch; background: rgba(26,101,119,0.18); flex-shrink: 0; }
-.pv-lead-text { text-align: left; }
-.pv-lead-name { font-size: 23px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-.pv-lead-desc { font-size: 17.5px; color: var(--muted); line-height: 1.65; }
-
-@media (max-width: 640px) {
-  .pv-lead-card { flex-direction: column; text-align: center; padding: 32px 24px; gap: 22px; }
-  .pv-lead-divider { width: 60%; height: 1px; align-self: center; }
-  .pv-lead-text { text-align: center; }
+  .sp-card { width: 160px; min-height: 120px; padding: 18px; }
+  .sp-card img { max-height: 68px; }
 }
 
 
@@ -878,12 +861,13 @@ body {
       </div>
     </div>
     <div class="nav-item">
-      <a href="#" class="nav-link">Sponsorship
+      <a href="#" class="nav-link">Our Partners
         <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </a>
       <div class="nav-dropdown">
+        <a href="knowledge-partners.html">Knowledge Partners</a>
+        <a href="sponsors.html">Supporting Partners</a>
         <a href="sponsorship-package.html">Sponsorship Package</a>
-        <a href="sponsors.html">Sponsors</a>
       </div>
     </div>
     <div class="nav-item">
@@ -914,9 +898,10 @@ body {
   <a href="#">Submission Guideline</a>
   <a href="abstract-submission-guidelines.html" class="sub">Abstract Submission Guidelines</a>
   <a href="full-paper-submission-guidelines.html" class="sub">Full Paper Submission Guidelines</a>
-  <a href="#">Sponsorship</a>
+  <a href="#">Our Partners</a>
+  <a href="knowledge-partners.html" class="sub">Knowledge Partners</a>
+  <a href="sponsors.html" class="sub">Supporting Partners</a>
   <a href="sponsorship-package.html" class="sub">Sponsorship Package</a>
-  <a href="sponsors.html" class="sub">Sponsors</a>
   <a href="#">Past Conference</a>
   <a href="4th-icscientec-2026.html" class="sub">4th ICSciEnTec 2026</a>
   <a href="3rd-icscientec-2025.html" class="sub">3rd ICSciEnTec 2025</a>
@@ -1038,57 +1023,50 @@ body {
   </div>
 </div>
 
-<!-- ════ PARTNERS — SPOTLIGHT TILES ════ -->
+<!-- ════ 2027 SPONSORS — TIERED GRID ════ -->
 <div class="op-section">
   <div class="section-header">
-    <h2 class="section-heading">Organising &amp; Knowledge <span class="gold">Partners</span></h2>
+    <h2 class="section-heading" style="font-size: calc(var(--font-lg) + 2px);"><span class="gold">2027</span> Sponsors</h2>
     <p class="section-sub-text">
-      ICSciEnTec 2027 is made possible through the leadership of our organising institutions
-      and the academic depth of our knowledge partners.
+      ICSciEnTec 2027 gratefully acknowledges the organisations supporting the conference.
     </p>
     <div class="section-divider"></div>
   </div>
 
-  <div class="pv-block">
-    <div class="pv-group-label">Lead Organisers</div>
-    <div class="pv-lead-card">
-      <div class="pv-lead-logo">
-        <img src="../images/cstlogo176-1.png" alt="CST logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="pv-fallback" style="display:none;">CST</div>
+  <div class="sp-tier">
+    <div class="sp-tier-label tier-title">Title Sponsor</div>
+    <div class="sp-grid">
+      <div class="sp-card tier-title"><img src="../images/undp-7.jpg" alt="UNDP logo"></div>
+      <div class="sp-card tier-title"><img src="../images/moit.png" alt="MOIT logo"></div>
+      <div class="sp-card tier-title"><img src="../images/GEF.jpg" alt="GEF logo"></div>
+    </div>
+  </div>
+
+  <div class="sp-tier">
+    <div class="sp-tier-label tier-platinum">Platinum &amp; Gold Sponsors</div>
+    <div class="sp-grid">
+      <div class="sp-card tier-platinum">
+        <img src="../images/dgpc-logo.png" alt="DGPC logo">
+        <span class="sp-card-tag tier-platinum">Platinum</span>
       </div>
-      <div class="pv-lead-divider"></div>
-      <div class="pv-lead-text">
-        <div class="pv-lead-name">College of Science and Technology</div>
-        <p class="pv-lead-desc">A constituent college of the Royal University of Bhutan, dedicated to excellence in engineering, science and applied research.</p>
+      <div class="sp-card tier-gold">
+        <img src="../images/bnblogo.png" alt="BNB logo">
+        <span class="sp-card-tag tier-gold">Gold</span>
+      </div>
+      <div class="sp-card tier-gold">
+        <img src="../images/dhi.jpg" alt="DHI logo">
+        <span class="sp-card-tag tier-gold">Gold</span>
       </div>
     </div>
   </div>
 
-  <div class="pv-block">
-    <div class="pv-group-label">Knowledge Partners</div>
-    <div class="pv-strip">
-
-      <!-- CST -->
-      <div class="pv-tile">
-        <div class="pv-logo">
-          <img src="../images/cstlogo176-1.png" alt="CST logo"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="pv-fallback" style="display:none;">CST</div>
-        </div>
-        <div class="pv-name">College of Science and Technology</div>
-      </div>
-
-      <!-- JNEC -->
-      <div class="pv-tile">
-        <div class="pv-logo">
-          <img src="../images/jnec-1.jpg" alt="JNEC logo"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="pv-fallback" style="display:none;">JN</div>
-        </div>
-        <div class="pv-name">Jigme Namgyel Engineering College</div>
-      </div>
-
+  <div class="sp-tier">
+    <div class="sp-tier-label tier-silver">Silver Sponsors</div>
+    <div class="sp-grid">
+      <div class="sp-card tier-silver"><img src="../images/WhatsApp-Image-2026-03-30-at-4.43.01-PM.jpeg" alt="Perfect logo"></div>
+      <div class="sp-card tier-silver"><img src="../images/BA.png" alt="Bhutan Automation logo"></div>
+      <div class="sp-card tier-silver"><img src="../images/BBP.jpg" alt="BBP logo"></div>
+      <div class="sp-card tier-silver"><img src="../images/DWA.jpg" alt="DWA logo"></div>
     </div>
   </div>
 </div>
