@@ -481,6 +481,34 @@ body {
     #ics-sponsors .ics-grid-silver    { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     #ics-sponsors .ics-grid-exhibitor { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 760px; margin: 0 auto; }
 
+    /* ── Professional partner card: bigger logo, description, website link, HQ location ── */
+    #ics-sponsors .ics-pgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; }
+    #ics-sponsors .ics-pcard {
+      width: 330px; background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      padding: 30px 26px; display: flex; flex-direction: column; align-items: center; text-align: center;
+      transition: box-shadow .22s, transform .22s, border-color .3s;
+      scroll-margin-top: 90px;
+    }
+    #ics-sponsors .ics-pcard:hover { box-shadow: 0 12px 30px rgba(26,101,119,0.12); transform: translateY(-3px); }
+    #ics-sponsors .ics-pcard:target { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(198,148,68,0.18); }
+    #ics-sponsors .ics-pcard-logo { height: 110px; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    #ics-sponsors .ics-pcard-logo img { max-width: 100%; max-height: 100px; object-fit: contain; }
+    #ics-sponsors .ics-pcard-name { font-weight: 800; color: var(--teal-d); font-size: 16px; margin-bottom: 8px; }
+    #ics-sponsors .ics-pcard-desc { color: var(--muted); font-size: 14.5px; line-height: 1.65; margin-bottom: 14px; }
+    #ics-sponsors .ics-pcard-meta {
+      display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); margin-bottom: 12px;
+    }
+    #ics-sponsors .ics-pcard-meta svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--teal); }
+    #ics-sponsors .ics-pcard-link {
+      font-size: 13.5px; font-weight: 700; color: var(--teal); text-decoration: none;
+      border-bottom: 1px solid rgba(26,101,119,0.3); padding-bottom: 1px;
+    }
+    #ics-sponsors .ics-pcard-link:hover { color: var(--teal-d); border-bottom-color: var(--teal-d); }
+
+    @media (max-width: 767px) {
+      #ics-sponsors .ics-pcard { width: 100%; max-width: 340px; }
+    }
+
     /* ── Card sizes: large (Title) down to extra-small (Exhibitor) ── */
     #ics-sponsors .ics-card-lg { padding: 40px 32px; max-width: 460px; width: 100%; border: 1.5px solid rgba(198,148,68,0.35); box-shadow: 0 16px 44px rgba(198,148,68,0.12); }
     #ics-sponsors .ics-card-md { padding: 30px 28px; max-width: 360px; width: 100%; }
@@ -592,11 +620,6 @@ body {
   <section class="ics-hero">
     <div class="ics-container">
       <h1>Our Supporting <span class="gold">Partners</span></h1>
-      <p>
-        Bringing together research, innovation and industry to create
-        meaningful impact through collaboration. We gratefully acknowledge
-        the organisations supporting ICSciEnTec.
-      </p>
       <a class="ics-button" href="#ics-sponsor-tiers">Explore Our Sponsors &darr;</a>
     </div>
   </section>
@@ -623,16 +646,41 @@ body {
         <h3>Title Sponsor</h3>
         <p>Our highest level of sponsorship recognition</p>
       </div>
-      <div class="ics-grid ics-grid-title">
-        <div class="ics-sponsor-card ics-card-lg">
-          <div class="ics-sponsor-logo ics-logo-lg ics-rotator" id="ics-title-rotator">
-            <img class="ics-rotate-slide is-active" src="../images/undp-7.jpg" alt="ECRUL partner logo">
-            <img class="ics-rotate-slide" src="../images/moit.png" alt="ECRUL partner logo">
-            <div class="ics-rotate-slide ics-logo-placeholder">ECRUL</div>
+      <div class="ics-pgrid">
+
+        <div class="ics-pcard" id="partner-undp">
+          <div class="ics-pcard-logo"><img src="../images/undp-7.jpg" alt="UNDP logo"></div>
+          <div class="ics-pcard-name">UNDP</div>
+          <p class="ics-pcard-desc">UNDP is the United Nations' global development network, working in nearly 170 countries to eradicate poverty and reduce inequality. In Bhutan, it partners with the Royal Government on climate resilience, governance and sustainable development. UNDP co-implements major initiatives such as the ECRUL urban climate resilience project.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            UN House, Kawajangsa, Thimphu, Bhutan
           </div>
-          <span class="ics-sponsor-name">ECRUL</span>
-          <span class="ics-tag ics-tag-title">Title Sponsor</span>
+          <a class="ics-pcard-link" href="https://www.bt.undp.org" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
+
+        <div class="ics-pcard" id="partner-moit">
+          <div class="ics-pcard-logo"><img src="../images/moit.png" alt="MOIT logo"></div>
+          <div class="ics-pcard-name">MOIT</div>
+          <p class="ics-pcard-desc">The Ministry of Infrastructure and Transport is the Bhutanese government body responsible for roads, urban infrastructure and transport policy. It is the lead implementing agency for the GEF/UNDP-funded ECRUL project enhancing climate resilience in the Thimphu–Paro urban region. The ministry oversees infrastructure development across Bhutan's dzongkhags.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Thimphu, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://ecrulproject.gov.bt" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
+        </div>
+
+        <div class="ics-pcard" id="partner-gef">
+          <div class="ics-pcard-logo"><img src="../images/GEF.jpg" alt="GEF logo"></div>
+          <div class="ics-pcard-name">GEF</div>
+          <p class="ics-pcard-desc">The Global Environment Facility is a multilateral fund established ahead of the 1992 Rio Earth Summit to confront biodiversity loss, climate change, pollution and land/ocean degradation. It partners with 184 countries, international institutions, civil society and the private sector. GEF's Least Developed Countries Fund backs Bhutan's ECRUL urban resilience project.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Washington, DC, USA
+          </div>
+          <a class="ics-pcard-link" href="https://www.thegef.org" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
+        </div>
+
       </div>
     </section>
 
@@ -642,12 +690,19 @@ body {
         <h3>Platinum Sponsor</h3>
         <p>Supporting ICSciEnTec at the highest tier of partnership</p>
       </div>
-      <div class="ics-grid ics-grid-platinum">
-        <div class="ics-sponsor-card ics-card-md">
-          <div class="ics-sponsor-logo ics-logo-md"><img src="../images/dgpc-logo.png" alt="DGPC logo"></div>
-          <span class="ics-sponsor-name">DGPC</span>
-          <span class="ics-tag">Platinum Sponsor</span>
+      <div class="ics-pgrid">
+
+        <div class="ics-pcard" id="partner-dgpc">
+          <div class="ics-pcard-logo"><img src="../images/dgpc-logo.png" alt="DGPC logo"></div>
+          <div class="ics-pcard-name">DGPC</div>
+          <p class="ics-pcard-desc">Druk Green Power Corporation is Bhutan's largest power producer and the backbone of its carbon-negative clean energy economy. It operates over 3,500 MW of installed hydropower capacity across the country's major plants. DGPC is wholly owned by the Royal Government through Druk Holding and Investments.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Thori Lam, Thimphu, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://www.drukgreen.bt" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
+
       </div>
     </section>
 
@@ -655,15 +710,32 @@ body {
     <section class="ics-section">
       <div class="ics-tier-heading">
         <h3>Gold Sponsors</h3>
-        <p>Gold sponsorship slots open for ICSciEnTec 2027</p>
+        <p>Supporting ICSciEnTec 2027</p>
       </div>
-      <div class="ics-grid ics-grid-gold">
-        <div class="ics-placeholder-card ics-card-sm">
-          <span class="ics-placeholder-label">Gold Sponsor — Coming Soon</span>
+      <div class="ics-pgrid">
+
+        <div class="ics-pcard" id="partner-bnb">
+          <div class="ics-pcard-logo"><img src="../images/bnblogo.png" alt="BNB logo"></div>
+          <div class="ics-pcard-name">BNB</div>
+          <p class="ics-pcard-desc">Bhutan National Bank, founded in 1997, is a leading commercial bank in Bhutan offering retail, corporate and SME banking services nationwide. It is one of the country's principal financial institutions supporting business and personal banking. BNB operates branches across multiple dzongkhags in Bhutan.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Norzin Lam, Thimphu, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://www.bnb.bt" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
-        <div class="ics-placeholder-card ics-card-sm">
-          <span class="ics-placeholder-label">Gold Sponsor — Coming Soon</span>
+
+        <div class="ics-pcard" id="partner-dhi">
+          <div class="ics-pcard-logo"><img src="../images/dhi.jpg" alt="DHI logo"></div>
+          <div class="ics-pcard-name">DHI</div>
+          <p class="ics-pcard-desc">Druk Holding and Investments is the commercial arm and investment steward of the Royal Government of Bhutan, established in 2007. It is the country's largest government-owned holding company, with shares in 21 domestic companies across energy, manufacturing, finance, aviation and trading. DHI manages these assets for the long-term benefit of the Bhutanese people.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Norzin Lam, Thimphu, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://www.dhi.bt" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
+
       </div>
     </section>
 
@@ -673,38 +745,50 @@ body {
         <h3>Silver Sponsors</h3>
         <p>Thank you for supporting our conference</p>
       </div>
-      <div class="ics-grid ics-grid-silver">
+      <div class="ics-pgrid">
 
-        <div class="ics-sponsor-card ics-card-sm">
-          <div class="ics-sponsor-logo ics-logo-sm"><img src="../images/WhatsApp-Image-2026-03-30-at-4.43.01-PM.jpeg" alt="Perfect logo"></div>
-          <span class="ics-sponsor-name">Perfect</span>
-          <span class="ics-tag">Silver Sponsor</span>
+        <div class="ics-pcard" id="partner-perfect">
+          <div class="ics-pcard-logo"><img src="../images/WhatsApp-Image-2026-03-30-at-4.43.01-PM.jpeg" alt="Perfect TMX TMT logo"></div>
+          <div class="ics-pcard-name">Perfect TMX TMT</div>
+          <p class="ics-pcard-desc">Perfect TMX TMT is Bhutan's sole manufacturer of Thermex TMT reinforcement bars and one of the largest such manufacturers in the northeastern subcontinent. Established in 2014, it also produces wire nails, roofing sheets, uPVC windows/doors and fibre-reinforced polymer products. It operates as part of the Pelden Group's Perfect Group of companies.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            YDF Building, Phuentsholing, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://perfecttmxtmt.com" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
 
-        <div class="ics-sponsor-card ics-card-sm">
-          <div class="ics-sponsor-logo ics-logo-sm"><div class="ics-logo-placeholder">BA</div></div>
-          <span class="ics-sponsor-name">Bhutan Automation</span>
-          <span class="ics-tag">Silver Sponsor</span>
+        <div class="ics-pcard" id="partner-ba">
+          <div class="ics-pcard-logo"><img src="../images/BA.png" alt="Bhutan Automation logo"></div>
+          <div class="ics-pcard-name">Bhutan Automation</div>
+          <p class="ics-pcard-desc">Bhutan Automation specializes in manufacturing and implementing industrial automation systems and secondary equipment. It is a joint venture between Druk Green Power Corporation (Bhutan) and Andritz Hydro Private Limited (India). The company is ISO 9001:2015, 14001:2015 and 45001:2018 certified.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bjachho, Chhukha, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://www.bhutanautomation.com" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
 
-        <div class="ics-sponsor-card ics-card-sm">
-          <div class="ics-sponsor-logo ics-logo-sm"><div class="ics-logo-placeholder">BBP</div></div>
-          <span class="ics-sponsor-name">Bhutan Board Products Pvt. Ltd.</span>
-          <span class="ics-tag">Silver Sponsor</span>
+        <div class="ics-pcard" id="partner-bbp">
+          <div class="ics-pcard-logo"><img src="../images/BBP.jpg" alt="Bhutan Board Products logo"></div>
+          <div class="ics-pcard-name">Bhutan Board Products Ltd.</div>
+          <p class="ics-pcard-desc">Bhutan Board Products is a Royal Government of Bhutan undertaking established in 1982, among the country's largest manufacturing industries. It manufactures wood particle board and ready-to-assemble furniture products. BBPL has operated for over four decades as a key player in Bhutan's wood-processing sector.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Tala, Phuentsholing, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://www.bhutanboard.com" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
 
-        <div class="ics-sponsor-card ics-card-sm">
-          <div class="ics-sponsor-logo ics-logo-sm"><div class="ics-logo-placeholder">DWA</div></div>
-          <span class="ics-sponsor-name">Druk Wang Alloys Ltd.</span>
-          <span class="ics-tag">Silver Sponsor</span>
-        </div>
-
-        <div class="ics-placeholder-card ics-card-sm">
-          <span class="ics-placeholder-label">Coming Soon</span>
-        </div>
-
-        <div class="ics-placeholder-card ics-card-sm">
-          <span class="ics-placeholder-label">Coming Soon</span>
+        <div class="ics-pcard" id="partner-dwa">
+          <div class="ics-pcard-logo"><img src="../images/DWA.jpg" alt="Druk Wang Alloys logo"></div>
+          <div class="ics-pcard-name">Druk Wang Alloys Ltd.</div>
+          <p class="ics-pcard-desc">Druk Wang Alloys, established in 2005, is the second-largest producer of ferro silicon in Bhutan. It operates a 36MVA production facility with a rated annual capacity of 24,000 metric tons. The company is a key industrial exporter in Bhutan's metallurgical sector.</p>
+          <div class="ics-pcard-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Samdrup Lam, Phuentsholing, Bhutan
+          </div>
+          <a class="ics-pcard-link" href="https://www.drukwang.com" target="_blank" rel="noopener noreferrer">Visit Website &rarr;</a>
         </div>
 
       </div>
