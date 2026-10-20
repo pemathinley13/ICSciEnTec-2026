@@ -105,8 +105,7 @@ $pageTitle = 'Registration Form';
 $user = null; // public page — no login required
 require __DIR__ . '/../templates/layout_start.php';
 ?>
-<div class="portal-hero">
-  <span class="portal-hero-badge"><span class="portal-hero-badge-dot"></span>5th ICSciEnTec &middot; 5&ndash;7 May 2027</span>
+<div class="portal-hero light-hero">
   <h1>Conference <span class="gold">Registration</span> Form</h1>
   <p>5th International Conference on Science, Engineering and Technology (ICSciEnTec 2027) — kindly register here for participation in the conference.</p>
   <div class="portal-hero-bar"></div>
